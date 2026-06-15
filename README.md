@@ -1,6 +1,8 @@
 # geo-skills
 
-A free, open-source GEO (Generative Engine Optimization) skill pack for Claude Code and compatible AI agents.
+A free, open-source GEO (Generative Engine Optimization) skill pack. Built as portable Agent Skills - runs in Claude Code, Codex, and other agents that read skill files.
+
+![geo-skills: your site URL into the geo orchestrator, scored across 6 weighted categories into a GEO Score and a prioritized fix list](docs/geo-flow.png)
 
 Traditional SEO ranks you in Google's blue links. **GEO gets you quoted inside the AI answer** - by ChatGPT, Claude, Perplexity, Gemini, and Google AI Overviews. This pack scores how citable your site is to those engines and writes you a prioritized fix list. No dashboard subscription, no paid API required. It runs locally in Claude Code.
 
@@ -45,9 +47,21 @@ Then it ranks every issue by severity (critical first, quick wins flagged) and g
 
 **Subagents** (in `agents/`, used by the orchestrator): `geo-ai-visibility`, `geo-content`, `geo-platform-analysis`, `geo-schema`, `geo-technical`.
 
+## Compatibility
+
+These are standard Agent Skills - each one is a `SKILL.md` instruction document plus a rubric and output format. That makes them portable:
+
+| Runtime | Status | Notes |
+|---|---|---|
+| **Claude Code** | Native | Full support, including the orchestrator's parallel subagents. |
+| **Codex** | Works | Drop the skills in `~/.codex/skills/`. Run skills directly. |
+| **Other agents** (Cursor, Hermes, etc.) | Works | Any agent that loads skill / instruction files can run the individual skills. |
+
+The individual skills (citability, crawlers, schema, content, and the rest) are plain instruction docs - any capable agent that can fetch a URL and write a file can run them. The one Claude Code-native piece is the `geo` orchestrator's **parallel** subagent fan-out (it launches 5 specialists at once). On other runtimes you invoke the skills directly, or the agent runs them in sequence - same checks, same output. The `allowed-tools` frontmatter is advisory and is safely ignored by agents that don't use it.
+
 ## Install
 
-See [INSTALL.md](INSTALL.md). Short version: copy `skills/` into `~/.claude/skills/` and `agents/` into `~/.claude/agents/`, then in Claude Code:
+See [INSTALL.md](INSTALL.md). Short version: copy `skills/` into your agent's skills directory (`~/.claude/skills/` for Claude Code, `~/.codex/skills/` for Codex) and, on Claude Code, `agents/` into `~/.claude/agents/`. Then:
 
 ```
 /geo audit https://yoursite.com

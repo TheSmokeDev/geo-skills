@@ -1,28 +1,37 @@
 # Install
 
-These are Claude Code skills. Installing them means placing the skill folders where Claude Code looks for them.
-
-## Quick install (manual)
+These are Agent Skills. Installing them means placing the skill folders where your agent looks for skills. Pick the section for your runtime.
 
 ```bash
 git clone https://github.com/SmokeAlot420/geo-skills.git
 cd geo-skills
-
-# copy the skills into your Claude Code skills directory
-cp -r skills/* ~/.claude/skills/
-
-# copy the orchestrator's subagents
-cp -r agents/* ~/.claude/agents/
 ```
 
-On Windows (PowerShell):
+### Claude Code
+
+```bash
+cp -r skills/* ~/.claude/skills/      # the skills
+cp -r agents/* ~/.claude/agents/      # the orchestrator's subagents
+```
+
+PowerShell:
 
 ```powershell
 Copy-Item -Recurse skills\* $HOME\.claude\skills\
 Copy-Item -Recurse agents\* $HOME\.claude\agents\
 ```
 
-Restart Claude Code (or reload skills) so it picks up the new skills.
+### Codex
+
+```bash
+cp -r skills/* ~/.codex/skills/
+```
+
+### Other agents
+
+Copy `skills/*` into whatever directory your agent loads skill / instruction files from. The skills are plain `SKILL.md` docs, so any agent that reads them can run the individual skills. The parallel-subagent fan-out in the `geo` orchestrator is Claude Code-specific; on other agents, invoke the skills directly (e.g. `geo-citability`, `geo-crawlers`, `geo-schema`).
+
+Restart or reload your agent so it picks up the new skills.
 
 ## Use it
 
