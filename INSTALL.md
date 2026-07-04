@@ -3,7 +3,7 @@
 These are Agent Skills. Installing them means placing the skill folders where your agent looks for skills. Pick the section for your runtime.
 
 ```bash
-git clone https://github.com/SmokeAlot420/geo-skills.git
+git clone https://github.com/TheSmokeDev/geo-skills.git
 cd geo-skills
 ```
 
@@ -60,6 +60,17 @@ Install them only if you use those features:
 
 ```bash
 pip install reportlab flask
+```
+
+`token-max-factory` (the programmatic page factory) needs two free, MIT-licensed tools only if you invoke it:
+
+```bash
+# Archon CLI >= 0.5.0 — macOS/Linux:
+curl -fsSL https://archon.diy/install | bash
+# Windows PowerShell:  irm https://archon.diy/install.ps1 | iex
+
+# The factory engine:
+git clone https://github.com/TheSmokeDev/token-max-site-factory
 ```
 
 No SEO API keys are required for any skill. Third-party data tools (rank trackers, backlink suites) are always optional and the skills degrade gracefully without them.
