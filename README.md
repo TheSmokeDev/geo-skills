@@ -41,6 +41,7 @@ Then it ranks every issue by severity (critical first, quick wins flagged) and g
 | `geo-proposal` / `geo-prospect` / `geo-compare` | Client tooling: proposals, pipeline, month-over-month deltas (optional, for agencies). |
 | `ai-seo` | The GEO strategy guide - the theory, the 3 pillars, platform-specific tactics. |
 | `token-max-factory` | Point-and-shoot programmatic page factory: scan a site, expand it into hundreds of validated 2,800+ word answer-first pages via [Archon](https://archon.diy). Hard uniqueness gates, packet-only facts, never deploys. Engine: [token-max-site-factory](https://github.com/TheSmokeDev/token-max-site-factory). |
+| `tokenmax-fleet-orchestrator` | Resumable, fail-closed controller for sequencing many TokenMax sites through consumer-defined audit, pilot, batch, build, deploy, live-proof, and indexing-queue stages. Includes atomic state, process locking, schema, tests, and systemd templates without hard-coded sites. |
 
 **Supporting SEO skills:**
 
@@ -72,7 +73,7 @@ See [INSTALL.md](INSTALL.md). Short version: copy `skills/` into your agent's sk
 
 Every skill in this pack works with no paid API. Where a third-party data tool could help (rank trackers, backlink suites), it is always marked optional and the skill degrades gracefully without it. Research figures cited in the skills come from published studies and are attributed inline.
 
-The one heavy-artillery exception: `token-max-factory` drives the free, MIT [Archon CLI](https://archon.diy) and the free, MIT [engine repo](https://github.com/TheSmokeDev/token-max-site-factory), and writes pages through the coding-agent subscription you already run this pack with (codex by default, claude opt-in). Still no SEO APIs, no data vendors, no dashboards.
+The heavy-artillery skills are `token-max-factory`, which drives the free, MIT [Archon CLI](https://archon.diy) and [engine repo](https://github.com/TheSmokeDev/token-max-site-factory), and `tokenmax-fleet-orchestrator`, which sequences consumer-owned site/deploy adapters. They use the coding-agent subscription already running the pack (codex by default, claude opt-in). Still no SEO APIs, no data vendors, no dashboards.
 
 ## License
 
