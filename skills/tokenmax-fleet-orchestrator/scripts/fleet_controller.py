@@ -529,6 +529,29 @@ class FleetController:
         sites.sort(key=lambda item: (int(item.get("priority", 1000)), item["id"]))
         return [site["id"] for site in sites]
 
+    def recover_interrupted_sites(self, state: dict[str, Any]) -> list[str]:
+        recovered: list[str] = []
+        timestamp = utc_now()
+        ordered = sorted(state["sites"].values(), key=lambda item: (item["priority"], item["id"]))
+        for site_state in ordered:
+            if site_state.get("status") != "running":
+                continue
+            for stage_state in site_state.get("stages", {}).values():
+                if stage_state.get("status") == "running":
+                    stage_state.update(
+                        {
+                            "status": "interrupted",
+                            "outcome": "interrupted",
+                            "completed_at": timestamp,
+                            "summary": "Runner stopped before this stage completed",
+                        }
+                    )
+            site_state["status"] = "queued"
+            site_state["blocked_reason"] = None
+            site_state["updated_at"] = timestamp
+            recovered.append(site_state["id"])
+        return recovered
+
     def dry_plan(self, state: dict[str, Any], max_sites: int) -> list[dict[str, Any]]:
         plan: list[dict[str, Any]] = []
         for site_id in self.eligible_sites(state)[:max_sites]:
@@ -556,6 +579,10 @@ class FleetController:
                 raise FleetError("Fleet is paused")
             if state.get("frozen"):
                 raise FleetError(f"Fleet is frozen: {state.get('freeze_reason')}")
+            recovered = self.recover_interrupted_sites(state)
+            if recovered:
+                self.save_state(state)
+                print("RECOVERED_INTERRUPTED_SITES=" + ",".join(recovered), flush=True)
             eligible = self.eligible_sites(state)
             if dry_run:
                 print(json.dumps({"fleet_id": state["fleet_id"], "plan": self.dry_plan(state, max_sites)}, indent=2))

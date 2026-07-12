@@ -125,6 +125,51 @@ class ControllerTests(unittest.TestCase):
         state = self.state()
         self.assertEqual(state["sites"]["good"]["status"], "complete")
 
+    def test_max_sites_continues_after_predeploy_block(self) -> None:
+        config = self.write_config(
+            [
+                {"id": "bad-build", "priority": 1},
+                {"id": "good", "priority": 2},
+            ]
+        )
+
+        self.run_cli(config, "run-next", "--max-sites", "2")
+
+        state = self.state()
+        self.assertEqual(state["sites"]["bad-build"]["status"], "blocked")
+        self.assertEqual(state["sites"]["good"]["status"], "complete")
+        self.assertFalse(state["frozen"])
+
+    def test_run_next_recovers_interrupted_site_at_current_stage(self) -> None:
+        config = self.write_config([{"id": "good", "priority": 1}])
+        self.run_cli(config, "init")
+        state = self.state()
+        site = state["sites"]["good"]
+        site.update(
+            {
+                "status": "running",
+                "run_id": "interrupted-run",
+                "current_stage": 1,
+                "stages": {
+                    "build": {
+                        "status": "running",
+                        "attempt": 1,
+                        "started_at": "2026-07-12T00:00:00+00:00",
+                    }
+                },
+            }
+        )
+        (self.root / "state" / "fleet-state.json").write_text(json.dumps(state), encoding="utf-8")
+
+        completed = self.run_cli(config, "run-next")
+
+        self.assertIn("RECOVERED_INTERRUPTED_SITES=good", completed.stdout)
+        state = self.state()
+        self.assertEqual(state["sites"]["good"]["status"], "complete")
+        self.assertEqual(state["sites"]["good"]["run_id"], "interrupted-run")
+        self.assertNotIn("audit", state["sites"]["good"]["stages"])
+        self.assertEqual(state["sites"]["good"]["stages"]["build"]["status"], "passed")
+
     def test_live_failure_freezes_fleet(self) -> None:
         config = self.write_config([{"id": "bad-live", "priority": 1}])
         self.run_cli(config, "run-next", expected=2)
