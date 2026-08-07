@@ -315,5 +315,5 @@ Generate a file called `GEO-CITABILITY-SCORE.md`:
 | **ChatGPT (Search)** | Prefers passages with explicit definitions, named sources, and recent dates. Tends to cite 2-4 sources per response. |
 | **Perplexity** | Heavily favors fact-dense passages with statistics. Cites 4-8 sources per response. Values recency highly. |
 | **Claude** | Prefers well-structured, comprehensive passages. Values nuance and accuracy over brevity. |
-| **Gemini (AI Overviews)** | Prefers concise answer blocks (40-60 words). Values content already ranking in top 10 organic results. |
+| **Gemini (AI Overviews)** | Prefers concise answer blocks (40-60 words). Top-10 organic rank helps but is no longer the gate — only 38% of AIO citations come from top-10 pages (Ahrefs, 863K SERPs, Mar 2026); fan-out sub-query coverage matters more (see `geo-fanout`). |
 | **Copilot (Bing)** | Similar to Gemini. Prefers passages from high-authority domains with clear factual claims. |

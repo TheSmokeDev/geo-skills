@@ -44,10 +44,10 @@ Gather this context (ask if not provided):
 
 | Platform | How It Works | Source Selection |
 |----------|-------------|----------------|
-| **Google AI Overviews** | Summarizes top-ranking pages | Strong correlation with traditional rankings |
-| **ChatGPT (with search)** | Searches web, cites sources | Draws from wider range, not just top-ranked |
-| **Perplexity** | Always cites sources with links | Favors authoritative, recent, well-structured content |
-| **Gemini** | Google's AI assistant | Pulls from Google index + Knowledge Graph |
+| **Google AI Overviews** | Summarizes indexed pages via Gemini 3 query fan-out | Only 38% of cited URLs rank in the organic top 10 (Ahrefs, Mar 2026) — fan-out pulls from sub-query SERPs |
+| **ChatGPT (with search)** | Retrieves from the **Bing index** (87% of citations match Bing results; no Google in pipeline), then cites | Bing indexation is the hard prerequisite; brand mentions outweigh backlinks |
+| **Perplexity** | Always cites sources with links | Own index + reranker; favors recent, well-structured, high-quality pages over raw domain authority |
+| **Gemini** | Google's AI assistant — its own surface (only 27% source overlap with AI Mode) | Google index + Knowledge Graph; leans entity/brand presence |
 | **Copilot** | Bing-powered AI search | Bing index + authoritative sources |
 | **Claude** | Brave Search (when enabled) | Training data + Brave search results |
 
@@ -94,8 +94,9 @@ When your competitors get cited and you don't, examine:
 - **Content structure** — Is their content more extractable?
 - **Authority signals** — Do they have more citations, stats, expert quotes?
 - **Freshness** — Is their content more recently updated?
-- **Schema markup** — Do they have structured data you're missing?
+- **Schema markup** — Do they carry structured data you're missing? (Worth matching for rich results and entity clarity, though per Ahrefs' May 2026 controlled study it is not itself a citation driver)
 - **Third-party presence** — Are they cited via Wikipedia, Reddit, review sites?
+- **Fan-out coverage** — Do they cover the sub-queries around the topic, not just the head term? (Only 38% of AIO-cited URLs rank in the organic top 10 — Ahrefs, Mar 2026)
 
 ### Step 3: Content Extractability Check
 
@@ -121,7 +122,7 @@ Verify your robots.txt allows AI crawlers. Each AI platform has its own bot, and
 - **GPTBot** and **ChatGPT-User** — OpenAI (ChatGPT)
 - **PerplexityBot** — Perplexity
 - **ClaudeBot** and **anthropic-ai** — Anthropic (Claude)
-- **Google-Extended** — Google Gemini and AI Overviews
+- **Google-Extended** — Google Gemini training data (note: it does NOT gate AI Overviews or Search appearance — that's standard Googlebot)
 - **Bingbot** — Microsoft Copilot (via Bing)
 
 Check your robots.txt for `Disallow` rules targeting any of these. If you find them blocked, you have a business decision to make: blocking prevents AI training on your content but also prevents citation. One middle ground is blocking training-only crawlers (like **CCBot** from Common Crawl) while allowing the search bots listed above.
@@ -212,10 +213,10 @@ AI systems don't just cite your website — they cite where you appear.
 
 **Third-party sources matter more than your own site:**
 - Wikipedia mentions (7.8% of all ChatGPT citations)
-- Reddit discussions (1.8% of ChatGPT citations)
+- YouTube — the strongest single measured AI-visibility signal (YouTube mentions r=0.737, Ahrefs 75K brands, Jul 2026)
+- Reddit discussions — but note the reframe: Reddit is only 1.93% of ChatGPT citation ref_types (Ahrefs, Apr 2026) and its share collapsed ~60%→10% in Sept 2025 (5WPR, May 2026). Reddit shapes what models SAY about you (consensus layer), not what they link to
 - Industry publications and guest posts
 - Review sites (G2, Capterra, TrustRadius for B2B SaaS)
-- YouTube (frequently cited by Google AI Overviews)
 - Quora answers
 
 **Actions:**
@@ -228,7 +229,9 @@ AI systems don't just cite your website — they cite where you appear.
 
 ### Schema Markup for AI
 
-Structured data helps AI systems understand your content. Key schemas:
+Structured data gives AI systems and knowledge graphs clean, unambiguous entity and fact data — but set expectations correctly: **schema does not lift AI citations on its own.** The Ahrefs controlled study (1,885 pages that added JSON-LD, May 2026) measured ChatGPT +2.2%, AI Mode +2.4%, AIO -4.6% — all within noise. Schema's real value is rich results plus entity clarity. Nuance (SSRN, Feb 2026): schema carrying concrete extractable facts can still correlate with citation — the lift is the quotable data, not the markup. Put the facts in visible content first.
+
+Key schemas:
 
 | Content Type | Schema | Why It Helps |
 |-------------|--------|-------------|
@@ -240,7 +243,7 @@ Structured data helps AI systems understand your content. Key schemas:
 | Reviews | `Review`, `AggregateRating` | Trust signals |
 | Organization | `Organization` | Entity recognition |
 
-Content with proper schema shows 30-40% higher AI visibility. For implementation, use the **schema-markup** skill.
+Schema's value is rich results and entity clarity — controlled testing (Ahrefs, May 2026) shows no direct AI-citation lift from markup alone. For implementation, use the **schema-markup** skill.
 
 ---
 

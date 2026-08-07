@@ -82,6 +82,8 @@ Calculate **Crawler Access Score**:
 
 Check for the presence of `/llms.txt` at the domain root.
 
+**Framing (August 2026 evidence):** llms.txt is an anti-hallucination facts hedge, not a visibility lever. Google Search Central (2026) states officially: "You don't need to create new machine readable files... to appear in generative AI search." The Zyppy meta-analysis of 54 studies (Jun 2026) scores it 2.0/10 — the lowest of 23 measured factors — and SE Ranking (Nov 2025) found zero correlation with AI citations. Score it as hygiene; never report it as a citation win.
+
 If found:
 - Validate the format against the llms.txt specification:
   - First line should be an H1 (`# Site Name`) with the site/project name.
@@ -90,12 +92,12 @@ If found:
   - Links in markdown format: `- [Title](url): Description`.
   - Optional `## Optional` section for supplementary resources.
 - Check for `/llms-full.txt` (complete content version).
-- Evaluate completeness: Does it cover key pages, documentation, and resources?
-- Check if it references important content that AI models should prioritize.
+- Evaluate completeness: Does it state canonical business facts (pricing, locations, founding date) and cover key pages?
+- Check if it references important content that AI systems should describe accurately.
 
 If not found:
-- Note the absence.
-- Recommend creation with a template based on the site type detected.
+- Note the absence as a LOW-severity hygiene gap, not a visibility blocker.
+- Recommend creation as a ~30-minute facts hedge with a template based on the site type detected.
 
 Calculate **llms.txt Score**:
 - 0 if absent.
@@ -153,7 +155,7 @@ Compute the composite **AI Visibility Score (0-100)** using these weights:
 | Citability Score | 35% |
 | Brand Mention Score | 30% |
 | Crawler Access Score | 25% |
-| llms.txt Score | 10% |
+| llms.txt (facts hedge — hygiene, not a citation lever) | 10% |
 
 Formula: `AI_Visibility = (Citability * 0.35) + (Brand_Mentions * 0.30) + (Crawler_Access * 0.25) + (LLMS_TXT * 0.10)`
 

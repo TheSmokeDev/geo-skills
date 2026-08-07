@@ -2,7 +2,7 @@
 
 Each AI search platform has its own search index, ranking logic, and content preferences. This guide covers what matters for getting cited on each one.
 
-Sources cited throughout: Princeton GEO study (KDD 2024), SE Ranking domain authority study, ZipTie content-answer fit analysis.
+Sources cited throughout: Princeton GEO study (KDD 2024), Ahrefs citation and brand-signal studies (2025-26), ZipTie content-answer fit analysis, 5WPR State of AI Citations (May 2026).
 
 ---
 
@@ -24,10 +24,11 @@ Google AI Overviews pull from Google's own index and lean heavily on E-E-A-T sig
 
 **What makes Google AI Overviews different:** They already have your traditional SEO signals — backlinks, page authority, topical relevance. The additional AI layer adds a preference for content with cited sources and structured data. Research shows that including authoritative citations in your content correlates with a 132% visibility boost, and writing with an authoritative (not salesy) tone adds another 89%.
 
-**Importantly, AI Overviews don't just recycle the traditional Top 10.** Only about 15% of AI Overview sources overlap with conventional organic results. Pages that wouldn't crack page 1 in traditional search can still get cited if they have strong structured data and clear, extractable answers.
+**Importantly, AI Overviews don't just recycle the traditional Top 10 — and the overlap is shrinking.** Only **38% of AIO-cited URLs ranked in the organic top 10** in 2026, down from 76% (Ahrefs, 863K SERPs / 4M URLs, Mar 2026); 31% of citations come from positions 11-100 and 31% from beyond position 100. The cause is Gemini 3 query fan-out: one prompt is rewritten into a cluster of sub-queries and citations are pulled from sub-query SERPs. Pages that wouldn't crack page 1 in traditional search can still get cited if they cover the fan-out cluster with clear, extractable answers. Also note that **Google AI Mode is a separate surface** — only 13.7% URL overlap with AIO and 1B MAU (Shadow, Jul 2026 — ⚠️ secondary source).
 
 **What to focus on:**
-- Schema markup is the single biggest lever — Article, FAQPage, HowTo, and Product schemas give AI Overviews structured context to work with (30-40% visibility boost)
+- Cover the query fan-out: own the sub-query space around your topic, not just the head term (Zyppy scores fan-out coverage 9.3/10, the top factor in its 23-factor meta-analysis, Jun 2026)
+- Schema markup is for rich results and entity clarity, NOT citations — in the Ahrefs controlled study (1,885 pages adding JSON-LD, May 2026), citations moved ChatGPT +2.2%, AI Mode +2.4%, AIO -4.6%, all within noise
 - Build topical authority through content clusters with strong internal linking
 - Include named, sourced citations in your content (not just claims)
 - Author bios with real credentials matter — E-E-A-T is weighted heavily
@@ -38,33 +39,34 @@ Google AI Overviews pull from Google's own index and lean heavily on E-E-A-T sig
 
 ## ChatGPT
 
-ChatGPT's web search draws from a Bing-based index. It combines this with its training knowledge to generate answers, then cites the web sources it relied on.
+ChatGPT's web search retrieves from the **Bing index** — 87% of citations match Bing results, with no Google anywhere in the pipeline (Subscribe PR, Jul 2026). It combines this with its training knowledge to generate answers, then cites the web sources it relied on. If Bing hasn't indexed you, ChatGPT can't cite you — Bing Webmaster Tools + IndexNow is the hard prerequisite.
 
-**What makes ChatGPT different:** Domain authority matters more here than on other AI platforms. An SE Ranking analysis of 129,000 domains found that authority and credibility signals account for roughly 40% of what determines citation, with content quality at about 35% and platform trust at 25%. Sites with very high referring domain counts (350K+) average 8.4 citations per response, while sites with slightly lower trust scores (91-96 vs 97-100) drop from 8.4 to 6 citations.
+**What makes ChatGPT different:** Brand signals outweigh traditional authority metrics. An Ahrefs analysis of 75,000 brands (Jul 2026) found branded web mentions correlate with AI visibility at r=0.664, brand search volume at 0.392, domain rating at only ~0.18-0.33, and raw backlink counts at r=0.218 — the weakest measured signal. YouTube mentions are the strongest single signal ever measured at r=0.737. Chasing backlink counts is the lowest-yield play; earning authentic brand mentions is the highest.
 
-**Freshness is a major differentiator.** Content updated within the last 30 days gets cited about 3.2x more often than older content. ChatGPT clearly favors recent information.
+**Freshness is a real but modest differentiator.** Cited URLs average **25.7% fresher** than Google organic results, and ChatGPT's freshness bias is the strongest of any platform — cited URLs skew ~458 days newer than organic (Ahrefs, 17M citations, 2025-26). The viral "fresh content gets cited 4.3x more" figure is untraceable; don't quote it.
 
 **The most important signal is content-answer fit** — a ZipTie analysis of 400,000 pages found that how well your content's style and structure matches ChatGPT's own response format accounts for about 55% of citation likelihood. This is far more important than domain authority (12%) or on-page structure (14%) alone. Write the way ChatGPT would answer the question, and you're more likely to be the source it cites.
 
-**Where ChatGPT looks beyond your site:** Wikipedia accounts for 7.8% of all ChatGPT citations, Reddit for 1.8%, and Forbes for 1.1%. Brand official sites are cited frequently but third-party mentions carry significant weight.
+**Where ChatGPT looks beyond your site:** its citation ref_types break down as search 88.46%, news 12.01%, Reddit 1.93%, YouTube 0.51%, academia 0.40% (Ahrefs, 1.4M prompts, Apr 2026). Reddit's small direct share is the reframe to internalize: Reddit shapes what the model SAYS (consensus/training layer) far more than what it LINKS — and Reddit's citation share collapsed from ~60% to ~10% in Sept 2025 (5WPR, May 2026).
 
 **What to focus on:**
-- Invest in backlinks and domain authority — it's the strongest baseline signal
-- Update competitive content at least monthly
+- Get indexed by Bing and keep it fresh via IndexNow — no Bing indexation, no ChatGPT citation
+- Earn authentic branded web mentions (publications, reviews, communities) — r=0.664 vs 0.218 for backlinks
 - Structure your content the way ChatGPT structures its answers (conversational, direct, well-organized)
 - Include verifiable statistics with named sources
+- Match titles and URL slugs to the questions engines fan out into — cited-URL titles score 0.656 cosine similarity to fan-out queries vs 0.484 for non-cited (Ahrefs, Apr 2026)
 - Clean heading hierarchy (H1 > H2 > H3) with descriptive headings
 
 ---
 
 ## Perplexity
 
-Perplexity always cites its sources with clickable links, making it the most transparent AI search platform. It combines its own index with Google's and runs results through multiple reranking passes — initial relevance retrieval, then traditional ranking factor scoring, then ML-based quality evaluation that can discard entire result sets if they don't meet quality thresholds.
+Perplexity always cites its sources with clickable links, making it the most transparent AI search platform. It runs its **own index plus an L3 reranker** — initial relevance retrieval, then traditional ranking factor scoring, then ML-based quality evaluation that can discard entire result sets if they don't meet quality thresholds. Because it doesn't depend on Bing, the Bing-indexation gate that applies to ChatGPT does not apply here.
 
 **What makes Perplexity different:** It's the most "research-oriented" AI search engine, and its citation behavior reflects that. Perplexity maintains curated lists of authoritative domains (Amazon, GitHub, major academic sites) that get inherent ranking boosts. It uses a time-decay algorithm that evaluates new content quickly, giving fresh publishers a real shot at citation.
 
 **Perplexity has unique content preferences:**
-- **FAQ Schema (JSON-LD)** — Pages with FAQ structured data get cited noticeably more often
+- **FAQ Schema (JSON-LD)** — Makes Q&A pairs trivially extractable. Frame it as parsability, not a citation guarantee: the Ahrefs controlled study (May 2026) found no citation lift from markup alone, though schema carrying concrete extractable facts may still correlate (SSRN, Feb 2026)
 - **PDF documents** — Publicly accessible PDFs (whitepapers, research reports) are prioritized. If you have authoritative PDF content gated behind a form, consider making a version public.
 - **Publishing velocity** — How frequently you publish matters more than keyword targeting
 - **Self-contained paragraphs** — Perplexity prefers atomic, semantically complete paragraphs it can extract cleanly
@@ -134,19 +136,20 @@ Allow: /
 
 If you're optimizing for AI search for the first time, focus your effort where your audience actually is:
 
-**Start with Google AI Overviews** — They reach the most users (45%+ of Google searches) and you likely already have Google SEO foundations in place. Add schema markup, include cited sources in your content, and strengthen E-E-A-T signals.
+**Start with Google AI Overviews** — They reach the most users (45%+ of Google searches) and you likely already have Google SEO foundations in place. Cover the fan-out sub-query space, include cited sources in your content, and strengthen E-E-A-T signals.
 
-**Then address ChatGPT** — It's the most-used standalone AI search tool for tech and business audiences. Focus on freshness (update content monthly), domain authority, and matching your content structure to how ChatGPT formats its responses.
+**Then address ChatGPT** — It's the most-used standalone AI search tool for tech and business audiences. Get indexed by Bing (87% of ChatGPT citations match Bing results), enable IndexNow, earn authentic brand mentions, and match your content structure to how ChatGPT formats its responses.
 
-**Then expand to Perplexity** — Especially valuable if your audience includes researchers, early adopters, or tech professionals. Add FAQ schema, publish PDF resources, and write in clear, self-contained paragraphs.
+**Then expand to Perplexity** — Especially valuable if your audience includes researchers, early adopters, or tech professionals. Publish original data, keep content fresh, and write in clear, self-contained paragraphs.
 
-**Copilot and Claude are lower priority** unless your audience skews enterprise/Microsoft (Copilot) or developer/analyst (Claude). But the fundamentals — structured content, cited sources, schema markup — help across all platforms.
+**Copilot and Claude are lower priority** unless your audience skews enterprise/Microsoft (Copilot) or developer/analyst (Claude). But the fundamentals — structured content, cited sources, clean entity data — help across all platforms.
 
 **Actions that help everywhere:**
 1. Allow all AI bots in robots.txt
-2. Implement schema markup (FAQPage, Article, Organization at minimum)
+2. Implement schema markup for rich results and entity clarity (FAQPage, Article, Organization at minimum) — not as a citation lever; controlled testing shows no direct citation lift (Ahrefs, May 2026)
 3. Include statistics with named sources in your content
 4. Update content regularly — monthly for competitive topics
 5. Use clear heading structure (H1 > H2 > H3)
 6. Keep page load time under 2 seconds
 7. Add author bios with credentials
+8. Earn authentic branded web mentions — the strongest measured off-site signal (r=0.664; YouTube mentions r=0.737 — Ahrefs 75K brands, Jul 2026)

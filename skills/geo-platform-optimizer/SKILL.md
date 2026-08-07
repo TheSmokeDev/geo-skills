@@ -24,11 +24,12 @@ Only **11% of domains** are cited by BOTH ChatGPT and Google AI Overviews for th
 ## Platform 1: Google AI Overviews (AIO)
 
 ### How AIO Selects Sources
-- 92% of AIO citations come from pages already ranking in the **top 10 organic results** — traditional SEO is the gateway
-- However, 47% of citations come from pages ranking **below position 5** — AIO has its own selection logic favoring clarity and directness over raw rank
+- Only **38% of AIO-cited URLs rank in the organic top 10** — down from 76% (Ahrefs, 863K SERPs / 4M URLs, Mar 2026). 31% of citations come from positions 11-100 and 31% from beyond position 100. The cause is Gemini 3 (Jan 2026) query fan-out pulling from sub-query SERPs — page-3 organic is NOT disqualifying
+- Fan-out coverage is the new meta-factor (Zyppy scores it 9.3/10, Jun 2026): engines rewrite one prompt into a cluster of sub-queries and retrieve per sub-query. Win the cluster, not the head term
 - AIO strongly favors pages with **clean structure, direct answers, and scannable formatting**
-- Featured snippet optimization has ~70% overlap with AIO optimization
+- Featured snippet optimization has meaningful overlap with AIO optimization
 - AIO prefers **concise, factual, unambiguous answers** — hedging and filler reduce citation probability
+- **Google AI Mode is a separate surface, not a bigger AIO:** AIO↔AI Mode URL overlap is only 13.7%, and AI Mode has 1B MAU (AIO 2.5B) with scarcer citation slots — 4.3 citations per response vs 10.3 in classic search (Shadow, Jul 2026 — ⚠️ secondary source). Optimize for them as distinct targets
 
 ### Optimization Checklist
 
@@ -47,7 +48,7 @@ Only **11% of domains** are cited by BOTH ChatGPT and Google AI Overviews for th
 
 | Criterion | Points | How to Score |
 |---|---|---|
-| Ranks in top 10 for target queries | 20 | 20 if yes, 10 if top 20, 0 if beyond |
+| Ranks for target queries / covers fan-out sub-queries | 20 | 20 if top 10, 10 if top 100 or strong sub-query coverage, 0 if invisible |
 | Question-based headings present | 10 | 2 points per question heading, max 10 |
 | Direct answers after headings | 15 | 3 points per direct answer, max 15 |
 | Tables present for comparison data | 10 | 10 if tables used appropriately, 5 if partial, 0 if absent |
@@ -63,22 +64,23 @@ Only **11% of domains** are cited by BOTH ChatGPT and Google AI Overviews for th
 ## Platform 2: ChatGPT Web Search
 
 ### How ChatGPT Selects Sources
-- Uses **Bing's search index** as its foundation (not Google)
-- Top citation sources by domain share: **Wikipedia (47.9%)**, Reddit (11.3%), YouTube, major news outlets
+- Retrieval runs on the **Bing index** — 87% of ChatGPT citations match Bing results, and there is NO Google anywhere in the pipeline (Subscribe PR, Jul 2026 — ⚠️ single source, but mechanism-consistent). Bing indexation + IndexNow is the hard prerequisite for ChatGPT visibility
+- Citation ref_type hierarchy (Ahrefs, 1.4M prompts, Apr 2026): search 88.46%, news 12.01%, **reddit 1.93%**, youtube 0.51%, academia 0.40%
+- **Reddit is consensus-shaping, not citation-earning.** Reddit is retrieved at scale but cited at only 1.93% of ref_types, and its citation share collapsed from ~60% to ~10% in Sept 2025 (5WPR State of AI Citations, May 2026). Reddit shapes what models SAY about your brand (training/consensus layer), not what they LINK to
 - ChatGPT heavily weights **entity recognition** — if your brand exists as a structured entity (Wikipedia, Wikidata, Crunchbase), it is far more likely to be cited
-- Prefers **authoritative, well-established sources** over new or niche sites
-- Longer, more comprehensive articles get cited more often than short pieces
-- ChatGPT tends to cite **the most canonical source** for a claim rather than the original
+- Branded web mentions are the strongest measured off-site signal (r=0.664; backlinks only r=0.218 — Ahrefs 75K brands, Jul 2026). Chasing backlink counts is the weakest measured play
+- Freshness bias is the strongest of any platform: cited URLs average 25.7% fresher than Google organic results (Ahrefs, 17M citations, 2025-26) — NOT the viral "4.3x" figure, which is untraceable
+- Title and URL slug matter before content is even read: cited-URL titles score 0.656 cosine similarity to fan-out queries vs 0.484 for non-cited; natural-language slugs are cited at 89.78% vs 81.11% (Ahrefs, Apr 2026)
 
 ### Optimization Checklist
 
 1. **Wikipedia Presence**: Check if the brand/person/product has a Wikipedia article. If not, assess notability criteria. If notable, create a draft. If an article exists, ensure it is accurate and current.
 2. **Wikidata Entity**: Verify the entity exists on Wikidata (wikidata.org). If not, create a Wikidata item with key properties: instance of, official website, social media links, founding date, headquarters location.
-3. **Bing Webmaster Tools**: Verify the site is registered in Bing Webmaster Tools. Submit sitemap. Check for crawl errors.
-4. **Bing Index Coverage**: Use `site:domain.com` on Bing to verify key pages are indexed. Bing may have different indexed pages than Google.
-5. **Reddit Authority**: Check for brand mentions on Reddit. Identify relevant subreddits. Assess whether the brand participates authentically in discussions.
+3. **Bing Webmaster Tools**: Verify the site is registered in Bing Webmaster Tools. Submit sitemap. Check for crawl errors. Enable **IndexNow** so new and updated pages hit the Bing index in near-real-time — this is the hard prerequisite for ChatGPT citation (87% of citations match Bing results).
+4. **Bing Index Coverage**: Use `site:domain.com` on Bing to verify key pages are indexed. Bing may have different indexed pages than Google — and Google indexation alone does nothing for ChatGPT.
+5. **Reddit Consensus**: Check for brand mentions on Reddit. The goal is shaping what models SAY about the brand (Reddit feeds the consensus/training layer), not earning citations — Reddit is only 1.93% of ChatGPT ref_types (Ahrefs, Apr 2026). Assess whether the brand participates authentically; paid or seeded mentions are spam-filtered and do not correlate.
 6. **YouTube Presence**: Verify YouTube channel exists with relevant content. Video descriptions should contain full URLs and entity information.
-7. **Authoritative Backlinks**: ChatGPT/Bing weight .edu, .gov, and major publication backlinks heavily. Audit backlink profile for these sources.
+7. **Brand Mention Profile**: Audit branded web mentions across publications, forums, and reviews — branded mentions correlate at r=0.664 with AI visibility while raw backlink counts correlate at only r=0.218 (Ahrefs 75K brands, Jul 2026). Do not pitch press-release wires: wire pickups are ~0.04% of citations (BuzzStream, 4M citations) and are spam-filtered.
 8. **Entity Consistency**: Brand name, founding date, leadership, and key facts must be consistent across Wikipedia, Crunchbase, LinkedIn, and the official website.
 9. **Comprehensive Content**: Pages targeting ChatGPT citation should be **2000+ words** with thorough topic coverage. ChatGPT prefers single authoritative sources over combining multiple thin pages.
 10. **Clear Attribution**: Include "About" sections, company descriptions, and founding stories. ChatGPT uses these for entity grounding.
@@ -90,9 +92,9 @@ Only **11% of domains** are cited by BOTH ChatGPT and Google AI Overviews for th
 | Wikipedia article exists and is accurate | 20 | 20 if exists, 10 if stub, 0 if none |
 | Wikidata entity with 5+ properties | 10 | 10 if complete, 5 if basic, 0 if none |
 | Bing index coverage of key pages | 10 | 10 if full, 5 if partial, 0 if poor |
-| Reddit brand mentions (positive) | 10 | 10 if active discussions, 5 if mentions, 0 if none |
+| Reddit consensus presence (authentic) | 10 | 10 if active discussions, 5 if mentions, 0 if none — shapes model output, not citations |
 | YouTube channel with relevant content | 10 | 10 if active, 5 if present but sparse, 0 if none |
-| Authoritative backlinks (.edu, .gov, press) | 15 | 3 points per authoritative backlink category, max 15 |
+| Branded web mentions (publications, forums, reviews) | 15 | 3 points per mention category with authentic coverage, max 15 |
 | Entity consistency across platforms | 10 | 10 if consistent, 5 if minor discrepancies, 0 if major |
 | Content comprehensiveness (2000+ words) | 10 | 10 if thorough, 5 if adequate, 0 if thin |
 | Bing Webmaster Tools configured | 5 | 5 if verified, 0 if not |
@@ -102,12 +104,11 @@ Only **11% of domains** are cited by BOTH ChatGPT and Google AI Overviews for th
 ## Platform 3: Perplexity AI
 
 ### How Perplexity Selects Sources
-- Top citation sources: **Reddit (46.7%)**, Wikipedia, YouTube, major publications
+- Runs its **own index plus an L3 reranker**, so Bing is not the hard gate here the way it is for ChatGPT
+- Historically Reddit-heavy, but Reddit's citation share collapsed from ~60% to ~10% in Sept 2025 (5WPR, May 2026) — treat community presence as consensus-shaping that influences what the model says, not as a citation farm
 - Perplexity places the **heaviest emphasis on community validation** of all AI search platforms
-- Strongly favors **discussion threads** where claims are debated, validated, or expanded by multiple participants
-- Prefers recent content — publication date is a strong ranking signal
-- Cites **multiple sources per answer** (typically 5-15), so there is more opportunity for mid-authority sites to appear
-- Uses its own crawling infrastructure in addition to search APIs
+- Cites **multiple sources per answer** (8.3 URLs on average), so there is more opportunity for mid-authority sites to appear
+- Strong freshness weighting and a documented preference for page quality over domain authority — list and comparison pages dominate (May-2026 findings still hold)
 
 ### Optimization Checklist
 
@@ -126,7 +127,7 @@ Only **11% of domains** are cited by BOTH ChatGPT and Google AI Overviews for th
 
 | Criterion | Points | How to Score |
 |---|---|---|
-| Active Reddit presence in relevant subreddits | 20 | 20 if active contributor, 10 if mentioned, 0 if absent |
+| Active Reddit presence in relevant subreddits | 20 | 20 if active contributor, 10 if mentioned, 0 if absent — value is consensus-shaping, not direct citation share |
 | Forum/community mentions (HN, SO, Quora) | 10 | 10 if multiple platforms, 5 if one, 0 if none |
 | Content freshness (updated within 6 months) | 10 | 10 if recent, 5 if within year, 0 if older |
 | Original research/data published | 15 | 15 if original research, 10 if case studies, 5 if some data, 0 if none |
@@ -141,11 +142,12 @@ Only **11% of domains** are cited by BOTH ChatGPT and Google AI Overviews for th
 ## Platform 4: Google Gemini
 
 ### How Gemini Selects Sources
-- Uses **Google's search index** plus strong weighting toward **Google-owned properties**
+- Grounded in **Google Search** (indexation is the entry ticket) but its own surface: Gemini↔AI Mode source overlap is only 27% (BrightEdge via Frase, Jun 2026) — do not assume AIO optimization covers the Gemini app
+- Leans **entity/brand presence across Google's ecosystem** (YouTube, Google Business Profile, LinkedIn, Knowledge Graph); source mix skews LinkedIn, Medium, Quora, Reddit, Wikipedia
 - YouTube content is weighted significantly more heavily than in standard Google Search
 - Google Business Profile data is directly accessible to Gemini
 - Gemini uses Google's Knowledge Graph directly — entity presence in Knowledge Graph is a major advantage
-- Structured data (Schema.org) is consumed directly by Gemini for entity understanding
+- Structured data helps Gemini parse entity facts, but per the Ahrefs controlled study (May 2026) markup alone does not lift citations — the extractable facts do
 - Gemini multi-modal: can reference images, videos, and text together
 
 ### Optimization Checklist
@@ -155,7 +157,7 @@ Only **11% of domains** are cited by BOTH ChatGPT and Google AI Overviews for th
 3. **YouTube Strategy**: Create YouTube content for every key topic. Optimize titles, descriptions, timestamps, and closed captions. Gemini cites YouTube more than any other AI platform.
 4. **YouTube Chapters and Timestamps**: Use chapters (timestamps in description) so Gemini can reference specific segments of videos.
 5. **Google Merchant Center**: For e-commerce, ensure products are in Google Merchant Center. Gemini references product data directly.
-6. **Structured Data (Schema.org)**: Implement comprehensive Schema.org markup. Gemini uses this for entity understanding more aggressively than other platforms.
+6. **Structured Data (Schema.org)**: Implement comprehensive Schema.org markup for entity clarity (Organization + sameAs). Frame expectations correctly: it keeps entity data unambiguous, but controlled testing (Ahrefs, May 2026) shows no direct citation lift from markup alone.
 7. **Google Sites Ecosystem**: Ensure presence across Google ecosystem: Google Scholar (for research), Google News (for publishers), Google Maps (for local).
 8. **Image Optimization**: Gemini is multi-modal. Use descriptive alt text, structured image filenames, and high-quality images. Include relevant images with every piece of content.
 9. **Google E-E-A-T Signals**: All standard Google E-E-A-T signals apply with extra weight. Author pages, about pages, editorial policies, and expertise demonstrations.
@@ -222,18 +224,19 @@ Only **11% of domains** are cited by BOTH ChatGPT and Google AI Overviews for th
 1. Wikipedia/Wikidata entity presence
 2. YouTube channel with relevant content
 3. Comprehensive, well-structured content with clear headings
-4. Schema.org structured data (especially Organization + sameAs)
+4. Schema.org structured data for entity clarity (Organization + sameAs) — rich results and unambiguous entities, not a citation lever
 5. Fast page load and clean HTML
 6. Author pages with credentials and sameAs links
 7. Regular content updates with visible dates
+8. Authentic branded web mentions across publications and communities (r=0.664 — the strongest measured off-site signal, Ahrefs 75K brands, Jul 2026)
 
 ### Platform-Specific Priorities
 | Priority | Google AIO | ChatGPT | Perplexity | Gemini | Copilot |
 |---|---|---|---|---|---|
-| #1 | Top-10 ranking | Wikipedia | Reddit presence | YouTube | IndexNow |
-| #2 | Q&A structure | Entity graph | Original research | Knowledge Panel | Bing WMT |
-| #3 | Tables/lists | Bing SEO | Freshness | Schema.org | LinkedIn |
-| #4 | Featured snippets | Reddit | Community forums | GBP | Meta descriptions |
+| #1 | Fan-out sub-query coverage | Bing indexation + IndexNow | Original research | YouTube | IndexNow |
+| #2 | Q&A structure | Entity graph | Page quality + freshness | Knowledge Panel | Bing WMT |
+| #3 | Tables/lists | Brand mentions | Community consensus | Entity/brand presence | LinkedIn |
+| #4 | Featured snippets | Title/slug match to fan-out queries | Discussion-friendly content | GBP | Meta descriptions |
 
 ---
 

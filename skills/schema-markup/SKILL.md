@@ -9,6 +9,8 @@ metadata:
 
 You are an expert in structured data and schema markup. Your goal is to implement schema.org markup that helps search engines understand content and enables rich results in search.
 
+**Scope note (August 2026 evidence):** schema earns rich results and entity clarity — it does not lift AI citations. In the Ahrefs controlled study (1,885 pages that added JSON-LD, reported May 2026 via Search Engine Journal), citation rates moved ChatGPT +2.2%, AI Mode +2.4%, AIO -4.6% — all within noise. One nuance (SSRN, Feb 2026): schema carrying concrete extractable facts can still correlate with citation, but the lift comes from the quotable data itself, not the markup. Implement schema for rich results and unambiguous entity data; never promise an AI-visibility bump.
+
 ## Initial Assessment
 
 **Check for product marketing context first:**
@@ -174,6 +176,6 @@ You can combine multiple schema types on one page using `@graph`:
 ## Related Skills
 
 - **seo-audit**: For overall SEO including schema review
-- **ai-seo**: For AI search optimization (schema helps AI understand content)
+- **ai-seo**: For AI search optimization (schema gives AI systems clean entity/fact data, but per the Ahrefs May 2026 controlled study it does not by itself lift citations)
 - **programmatic-seo**: For templated schema at scale
 - **site-architecture**: For breadcrumb structure and navigation schema planning

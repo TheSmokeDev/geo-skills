@@ -15,8 +15,8 @@ Point the orchestrator at a URL. It crawls your site, runs a panel of specialist
 | AI Citability | 25% | How quotable and extractable your content is for an LLM |
 | Brand Authority | 20% | Third-party mentions and entity-recognition signals |
 | Content E-E-A-T | 20% | Experience, Expertise, Authoritativeness, Trustworthiness |
-| Technical GEO | 15% | AI crawler access, llms.txt, rendering, speed |
-| Schema / Structured Data | 10% | Schema.org markup quality and completeness |
+| Technical GEO | 15% | AI crawler access, index/preview control (nosnippet), rendering, speed |
+| Schema / Structured Data | 10% | Schema.org markup for rich results and entity clarity |
 | Platform Optimization | 10% | Presence on the platforms AI models cite |
 
 Then it ranks every issue by severity (critical first, quick wins flagged) and gives you a 30-day action plan.
@@ -31,10 +31,14 @@ Then it ranks every issue by severity (critical first, quick wins flagged) and g
 | `geo-audit` | Full website GEO+SEO audit with parallel subagent delegation. |
 | `geo-citability` | Scores content passages (0-100) for AI extractability, suggests rewrites. |
 | `geo-crawlers` | Audits robots.txt and headers for AI crawler access (GPTBot, ClaudeBot, PerplexityBot...). |
-| `geo-llmstxt` | Validates or generates an `llms.txt` file. |
+| `geo-ai-index-access` | The hard prerequisites: Bing indexation + IndexNow (ChatGPT's retrieval pipeline), preview-control (nosnippet) audit, server-rendered HTML check. |
+| `geo-fanout` | Query fan-out / topic-cluster optimization: map the sub-query space engines actually retrieve from, engineer titles/slugs for it. |
+| `geo-youtube` | YouTube citation playbook: transcript-first videos, chapters, verbatim-query titles — the rank-free citation lane. |
+| `geo-measurement` | Volatility-aware measurement: share-of-citation prompt panels, position tracking, anti-overreaction reporting. |
+| `geo-llmstxt` | Anti-hallucination facts hedge: validates or generates an `llms.txt` so models get your details right (hygiene, not a visibility lever). |
 | `geo-brand-mentions` | Maps where your brand is cited across the web; scores brand authority. |
 | `geo-platform-optimizer` | Platform-specific optimization for Google AIO, ChatGPT, Perplexity, Gemini, Copilot. |
-| `geo-schema` | Detects, validates, and generates JSON-LD schema for AI entity recognition. |
+| `geo-schema` | Detects, validates, and generates JSON-LD schema for rich results and entity clarity. |
 | `geo-technical` | Technical SEO + GEO checks (crawlability, SSR, rendering, Core Web Vitals). |
 | `geo-content` | E-E-A-T and content-quality assessment for AI citability. |
 | `geo-report` / `geo-report-pdf` | Business-facing GEO reports (markdown + professional PDF). |

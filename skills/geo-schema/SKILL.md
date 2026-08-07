@@ -1,6 +1,6 @@
 ---
 name: geo-schema
-description: Schema.org structured data audit and generation optimized for AI discoverability — detect, validate, and generate JSON-LD markup
+description: Schema.org structured data audit and generation for rich results and entity clarity — detect, validate, and generate JSON-LD markup. Schema is NOT an AI-citation lever (Ahrefs controlled study, May 2026); it earns rich results and keeps entity data unambiguous.
 version: 1.0.0
 author: geo-seo-claude
 tags: [geo, schema, structured-data, json-ld, entity-recognition, ai-discoverability]
@@ -10,7 +10,13 @@ tags: [geo, schema, structured-data, json-ld, entity-recognition, ai-discoverabi
 
 ## Purpose
 
-Structured data is the primary machine-readable signal that tells AI systems what an entity IS, what it does, and how it connects to other entities. While schema markup has traditionally been about earning Google rich results, its role in GEO is fundamentally different: **structured data is how AI models understand and trust your entity**. A complete entity graph in structured data dramatically increases citation probability across all AI search platforms.
+Structured data does two jobs well: **earning Google rich results** and **keeping entity data unambiguous** (who the organization is, what it offers, which profiles belong to it). That is the scope of this skill.
+
+**What schema does NOT do: lift AI citations.** In the Ahrefs controlled study (1,885 pages that added JSON-LD, reported May 2026 via Search Engine Journal), citation rates moved ChatGPT +2.2%, AI Mode +2.4%, AIO -4.6% — all within noise. Adding markup alone produced no citation lift on any platform. Do not sell schema as a GEO tactic.
+
+**The nuance worth keeping** (SSRN, Feb 2026): schema that carries concrete, extractable facts (dates, prices, locations, specs) can still correlate with citation — but the lift comes from the quotable data, not the markup itself. Put the facts in visible, well-structured page content first; schema is the machine-readable echo, not the signal.
+
+With that framing, complete and accurate structured data remains worthwhile: rich results still win SERP real estate, and clean entity data (Organization, sameAs, contactPoint) removes ambiguity for every system — search engines, knowledge graphs, and AI platforms alike.
 
 ## How to Use This Skill
 
@@ -46,7 +52,7 @@ For each detected schema block, validate:
 1. **Valid JSON**: Is the JSON-LD syntactically valid? Check for trailing commas, unquoted keys, malformed strings.
 2. **Valid @type**: Does the `@type` match a recognized Schema.org type? Check against https://schema.org/docs/full.html.
 3. **Required Properties**: Does the schema include all required properties for its type? (See per-type requirements below.)
-4. **Recommended Properties**: Does the schema include recommended properties that increase AI discoverability?
+4. **Recommended Properties**: Does the schema include recommended properties that improve rich-result eligibility and entity clarity?
 5. **sameAs Links**: Does the schema include `sameAs` properties linking to other platform presences?
 6. **URL Validity**: Do all URLs in the schema resolve (not 404)?
 7. **Nesting**: Is the schema properly nested (e.g., author inside Article, address inside Organization)?
@@ -57,7 +63,7 @@ For each detected schema block, validate:
 ## Step 3: Schema Types for GEO
 
 ### Organization (CRITICAL — every business site)
-Essential for entity recognition across all AI platforms. This is how AI models identify WHAT the business is.
+The backbone of unambiguous entity data: it states WHAT the business is in a form every search engine and knowledge graph can parse without inference.
 
 **Required properties:**
 - `@type`: "Organization" (or subtype: Corporation, LocalBusiness, etc.)
@@ -76,7 +82,7 @@ Essential for entity recognition across all AI platforms. This is how AI models 
 - `numberOfEmployees`: QuantitativeValue
 - `industry`: Text or DefinedTerm
 - `award`: Array of awards received
-- `knowsAbout`: Array of topics the organization is expert in (strong GEO signal)
+- `knowsAbout`: Array of topics the organization is expert in (entity clarity signal)
 
 ### LocalBusiness (for businesses with physical locations)
 Extends Organization. Critical for local AI search results and Google Gemini.
@@ -94,7 +100,7 @@ Extends Organization. Critical for local AI search results and Google Gemini.
 - `hasMap`: URL to Google Maps
 
 ### Article + Author (CRITICAL for publishers)
-The Author schema is one of the strongest E-E-A-T signals for AI platforms.
+Author markup supports E-E-A-T presentation and article rich results; it also keeps byline facts consistent for any system parsing the page.
 
 **Article required:**
 - `@type`: "Article" (or NewsArticle, BlogPosting, TechArticle)
@@ -129,7 +135,7 @@ The Author schema is one of the strongest E-E-A-T signals for AI platforms.
 - `material`, `weight`, `width`, `height` (where applicable)
 
 ### FAQPage
-**Status as of 2024**: Google restricts FAQ rich results to government and health sites. However, the FAQPage schema still serves GEO purposes — AI platforms parse FAQ structured data for question-answer extraction. Implement it for AI readability even though rich results may not appear.
+**Status as of 2024**: Google restricts FAQ rich results to government and health sites. FAQPage schema still makes Q&A pairs trivially machine-readable, but treat it as a parsability convenience, not a citation play — the Ahrefs controlled study (May 2026) found no AI-citation lift from adding JSON-LD. Implement it where Q&A content exists; expect clean extraction, not a visibility bump.
 
 **Structure:**
 - `@type`: "FAQPage"
@@ -144,7 +150,7 @@ The Author schema is one of the strongest E-E-A-T signals for AI platforms.
 
 **Recommended for GEO:**
 - `aggregateRating`: User ratings
-- `featureList`: Array of features (strong citation signal)
+- `featureList`: Array of features (concrete extractable facts — remember the lift comes from the data, not the markup)
 - `screenshot`: Screenshots
 - `softwareVersion`: Current version
 - `releaseNotes`: Link to changelog
@@ -185,7 +191,7 @@ The `speakable` property marks specific sections of content as particularly suit
   }
 }
 ```
-This signals to AI assistants which passages are the best candidates for citation or reading aloud.
+This marks which passages are intended for text-to-speech and assistant consumption. Treat it as a hint for voice surfaces; there is no controlled evidence it changes AI citation behavior.
 
 ---
 
@@ -204,9 +210,9 @@ Flag any deprecated schemas found and recommend replacements.
 
 ---
 
-## Step 5: sameAs Strategy (CRITICAL for Entity Recognition)
+## Step 5: sameAs Strategy (CRITICAL for Entity Clarity)
 
-The `sameAs` property is the single most important structured data property for GEO. It tells AI systems: "This entity on my website is the SAME entity as these profiles elsewhere." This creates the entity graph that AI platforms use to verify, trust, and cite sources.
+The `sameAs` property is the highest-value structured data property for entity clarity. It tells every consuming system: "This entity on my website is the SAME entity as these profiles elsewhere." That removes ambiguity across search engines, knowledge graphs, and AI platforms — consistent entity data is a prerequisite for being recognized at all, even though (per the Ahrefs May 2026 controlled study) the markup alone does not lift citations.
 
 ### Recommended sameAs Links (in priority order)
 

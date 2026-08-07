@@ -162,7 +162,6 @@ Every issue found during the audit is classified by severity:
 
 ### High (Fix Within 1 Week)
 - Key AI crawlers (GPTBot, ClaudeBot, PerplexityBot) blocked
-- No llms.txt file present
 - Zero question-answering content blocks on key pages
 - Missing Organization or LocalBusiness schema
 - No author attribution on content pages
@@ -170,13 +169,13 @@ Every issue found during the audit is classified by severity:
 
 ### Medium (Fix Within 1 Month)
 - Partial AI crawler blocking (some allowed, some blocked)
-- llms.txt exists but is incomplete or malformed
 - Content blocks average under 50 citability score
 - Missing FAQ schema on pages with FAQ content
 - Thin author bios without credentials
 - No Wikipedia or Reddit brand presence
 
 ### Low (Optimize When Possible)
+- No llms.txt file present, or llms.txt exists but is incomplete or malformed — a ~30-minute anti-hallucination facts hedge, NOT a visibility lever (Google Search Central 2026: "You don't need to create new machine readable files... to appear in generative AI search"; Zyppy scores it 2.0/10, lowest of 23 factors, Jun 2026; SE Ranking found zero correlation, Nov 2025)
 - Minor schema validation errors
 - Some images missing alt text
 - Content freshness issues on non-critical pages

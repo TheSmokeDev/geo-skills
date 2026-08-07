@@ -1,6 +1,6 @@
 ---
 name: geo-llmstxt
-description: Analyzes and generates llms.txt files -- the emerging standard for helping AI systems understand website structure and content. Can validate existing llms.txt files or generate new ones from scratch by crawling the site.
+description: Analyzes and generates llms.txt files -- a lightweight anti-hallucination facts hedge that tells AI systems your canonical business facts and key pages. NOT an AI-visibility or citation lever (debunked by Google, Zyppy, and SE Ranking). Can validate existing llms.txt files or generate new ones from scratch by crawling the site.
 allowed-tools:
   - Read
   - Grep
@@ -14,19 +14,23 @@ allowed-tools:
 
 ## Purpose
 
-This skill handles everything related to the `llms.txt` standard -- an emerging convention (proposed by Jeremy Howard in September 2024, gaining adoption through 2025-2026) that allows websites to provide structured guidance to AI systems about their content, structure, and key information. It is analogous to `robots.txt` (which tells crawlers what NOT to access) but instead tells AI systems what IS most useful to understand about the site.
+This skill handles everything related to the `llms.txt` convention (proposed by Jeremy Howard in September 2024) -- a single Markdown file at the domain root that states your canonical business facts and points at your most important pages.
 
-## Why llms.txt Matters
+**Positioning as of August 2026: llms.txt is a 30-minute anti-hallucination facts hedge, NOT an AI-visibility lever.** Do not sell it to clients as a ranking or citation play -- the evidence says it does not move citations:
 
-AI language models face a fundamental challenge when processing websites: they must determine which pages are most important, what the site is about, and how content is organized -- typically by crawling many pages and inferring structure. `llms.txt` solves this by providing an explicit, machine-readable (and human-readable) summary.
+- **Google Search Central, 2026 (official):** "You don't need to create new machine readable files... to appear in generative AI search." Google has stated plainly that no AI-specific file is required or rewarded.
+- **Zyppy meta-analysis of 54 studies (via digitalapplied.com, Jun 2026):** llms.txt scores **2.0 out of 10 -- the lowest of all 23 measured GEO factors**.
+- **SE Ranking (seranking.com/blog/llms-txt, Nov 2025):** found **zero correlation** between having an llms.txt file and AI citation/visibility.
 
-**Benefits of having a well-crafted llms.txt:**
+## What llms.txt Is Actually For
 
-1. **Faster AI comprehension:** AI systems can understand your site's purpose and structure from a single file rather than crawling dozens of pages.
-2. **Controlled narrative:** You choose which pages and facts AI systems see first, shaping how they represent your brand.
-3. **Higher citation accuracy:** AI systems that consult llms.txt can cite the correct, authoritative page for each topic.
-4. **Reduced misrepresentation:** Key facts (pricing, features, locations) are stated explicitly, reducing AI hallucination about your business.
-5. **Early adopter advantage:** As of early 2026, fewer than 5% of websites have an llms.txt file, making it a differentiator.
+What remains is real but modest. A well-crafted llms.txt is worth roughly 30 minutes of effort because it:
+
+1. **Reduces misrepresentation:** Key facts (pricing, features, locations, founding date) are stated explicitly in one place, reducing AI hallucination about your business when a system does consult the file.
+2. **Controls the narrative:** You choose which pages and facts are presented as canonical, rather than leaving inference to a crawler.
+3. **Costs almost nothing:** It is a single static Markdown file. There is no maintenance burden beyond updating it when facts change.
+
+What it does **not** do: improve rankings, increase citation rates, or substitute for indexation, crawlability, or content quality. Treat it as hygiene -- like a favicon or a humans.txt with a purpose -- and never present it in an audit as a visibility win.
 
 ---
 
@@ -150,7 +154,7 @@ In addition to `llms.txt`, sites can provide `/llms-full.txt` -- an extended ver
 | **Sections** | 3-6 sections | 8-15 sections |
 | **Key facts** | Business-level facts | Page-level facts and data points |
 
-Both files can coexist. AI systems check for `llms.txt` first, then may optionally load `llms-full.txt` for deeper understanding.
+Both files can coexist. The convention is that AI systems that choose to consult llms.txt may optionally follow the link to `llms-full.txt` for deeper detail -- but note there is no evidence (as of Aug 2026) that major AI platforms fetch either file systematically, which is why this skill frames llms.txt as a facts hedge rather than a visibility lever.
 
 ---
 
@@ -223,6 +227,8 @@ Rate the llms.txt on these dimensions:
 ## Generation Mode
 
 When creating a new llms.txt file from scratch:
+
+**Generator script:** `skills/geo/scripts/llmstxt_generator.py` automates the crawl-and-assemble flow below. Use it as the fast path for the facts hedge -- its output is a canonical-facts file to keep AI systems from hallucinating your basics, not a ranking play. Budget ~30 minutes total including review.
 
 ### Step 1: Site Discovery
 

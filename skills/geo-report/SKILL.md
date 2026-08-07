@@ -144,11 +144,11 @@ Present entity presence across platforms:
 
 | Platform | Presence | Status | Impact on AI Visibility |
 |---|---|---|---|
-| Wikipedia | Yes/No | [Detail] | Very High — 47.9% of ChatGPT citations are Wikipedia |
+| Wikipedia | Yes/No | [Detail] | Very High — strongest entity-recognition signal for ChatGPT |
 | Wikidata | Yes/No | [Detail] | High — machine-readable entity data |
 | LinkedIn | Yes/No | [Detail] | High — Bing Copilot and ChatGPT signal |
-| YouTube | Yes/No | [Detail] | High — Gemini and Perplexity signal |
-| Reddit | Yes/No | [Detail] | Very High — 46.7% of Perplexity citations are Reddit |
+| YouTube | Yes/No | [Detail] | Very High — YouTube mentions are the strongest single measured AI-visibility signal (r=0.737, Ahrefs 75K brands, Jul 2026) |
+| Reddit | Yes/No | [Detail] | Medium — consensus-shaping that influences what models SAY; direct citation share collapsed ~60%→10% in Sept 2025 (5WPR, May 2026) |
 | Google Knowledge Panel | Yes/No | [Detail] | High — Gemini entity recognition |
 | Crunchbase | Yes/No | [Detail] | Medium — entity validation |
 | GitHub | Yes/No | [Detail] | Medium — tech brand signal |
@@ -197,14 +197,16 @@ Present the key technical findings in business-friendly language:
 ## Schema & Structured Data
 
 ### Current Implementation
-| Schema Type | Present | Status | AI Impact |
+| Schema Type | Present | Status | Value |
 |---|---|---|---|
-| Organization | Yes/No | [Valid/Issues] | Critical — entity recognition |
-| Article + Author | Yes/No | [Valid/Issues] | High — E-E-A-T signal |
-| sameAs (entity links) | Yes/No | [Count] links | Critical — cross-platform entity graph |
-| [Business-specific] | Yes/No | [Valid/Issues] | [Impact] |
+| Organization | Yes/No | [Valid/Issues] | Critical — unambiguous entity data |
+| Article + Author | Yes/No | [Valid/Issues] | High — E-E-A-T presentation + rich results |
+| sameAs (entity links) | Yes/No | [Count] links | Critical — cross-platform entity consistency |
+| [Business-specific] | Yes/No | [Valid/Issues] | [Rich-result eligibility] |
 | WebSite + SearchAction | Yes/No | [Valid/Issues] | Medium — sitelinks |
 | BreadcrumbList | Yes/No | [Valid/Issues] | Low-Medium — navigation context |
+
+Note for framing: schema earns rich results and entity clarity. It does NOT lift AI citations on its own — the Ahrefs controlled study (1,885 pages, May 2026) measured ChatGPT +2.2%, AI Mode +2.4%, AIO -4.6%, all within noise.
 ```
 
 If schemas are missing, note: "Ready-to-use structured data code has been prepared and is included in the technical appendix. Your development team can add this to your site with minimal effort."
@@ -212,7 +214,7 @@ If schemas are missing, note: "Ready-to-use structured data code has been prepar
 ### Section 9: llms.txt Status
 
 ```markdown
-## llms.txt — AI Content Guide
+## llms.txt — AI Facts Hedge (Hygiene, Not Visibility)
 
 | File | Status | Recommendation |
 |---|---|---|
@@ -220,7 +222,7 @@ If schemas are missing, note: "Ready-to-use structured data code has been prepar
 | /llms-full.txt | Present/Missing | [Action] |
 ```
 
-**Translate for the client**: "llms.txt is an emerging standard (similar to robots.txt) that tells AI systems what your site is about and which pages are most important. While not universally adopted yet, implementing it positions your brand ahead of competitors and provides direct guidance to AI platforms."
+**Translate for the client**: "llms.txt is a small file (similar in spirit to robots.txt) that states your canonical business facts and key pages in one place. It is a 30-minute hedge against AI systems hallucinating your pricing, locations, or founding date — it is NOT a visibility play. Google stated officially in 2026 that 'you don't need to create new machine readable files... to appear in generative AI search,' and independent studies (Zyppy, Jun 2026; SE Ranking, Nov 2025) found no citation benefit. We include it as cheap hygiene, nothing more."
 
 ### Section 10: Prioritized Action Plan
 
@@ -383,7 +385,7 @@ This GEO audit was conducted using the following methodology:
 Where possible, connect recommendations to business value:
 - "Improving your Google AIO readiness from 35 to 70 could increase your presence in AI Overviews by an estimated 50%, which at current search volumes represents approximately 2,000 additional monthly visitors"
 - "Server-side rendering would make your content accessible to ChatGPT, Perplexity, and other AI platforms — collectively representing an audience your competitors are already reaching"
-- "The investment in Schema.org markup (estimated 8-16 hours of developer time) could increase your entity recognition score from 20 to 75, significantly improving citation probability"
+- "The investment in Schema.org markup (estimated 8-16 hours of developer time) secures rich-result eligibility and unambiguous entity data across every platform — note that controlled testing (Ahrefs, May 2026) shows markup alone does not increase AI citations, so we frame this as SERP real estate and entity clarity, not citation lift"
 
 Be conservative with estimates. State assumptions clearly. Never guarantee specific results.
 

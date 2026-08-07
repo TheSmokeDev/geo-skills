@@ -12,6 +12,8 @@ allowed-tools:
 
 # AI Crawler Access Analysis Skill
 
+> **Scope note:** This skill covers robots.txt / meta-tag / HTTP-header crawler access. Two related jobs moved to the sibling **geo-ai-index-access** skill: (1) nosnippet / preview-control auditing (`nosnippet`, `max-snippet` legacy tags — a 9.2/10 GEO factor per the Zyppy meta-analysis, Jun 2026) and (2) Bing indexation + IndexNow setup (the hard prerequisite for ChatGPT — 87% of citations match Bing results). Use `geo-ai-index-access` for those; use this skill for the crawler allow/block map.
+
 ## Purpose
 
 This skill analyzes a website's accessibility to AI crawlers -- the bots that AI companies use to discover, index, and train on web content. If AI crawlers are blocked, the site's content cannot appear in AI-generated responses regardless of its quality. Crawler access is the foundational technical requirement for GEO.

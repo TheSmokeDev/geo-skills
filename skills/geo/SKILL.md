@@ -55,7 +55,7 @@ allowed-tools: Read, Grep, Glob, Bash, WebFetch, Write
 | Perplexity monthly queries | 500M+ | Perplexity |
 | Gartner: search traffic drop by 2028 | -50% | Gartner |
 | Marketers investing in GEO | Only 23% | Industry surveys |
-| Brand mentions vs backlinks for AI | 3x stronger correlation | Ahrefs (Dec 2025) |
+| Brand mentions vs backlinks for AI | Branded web mentions r=0.664, YouTube mentions r=0.737, backlinks only r=0.218 | Ahrefs 75K brands (Jul 2026) |
 
 ---
 
@@ -122,10 +122,10 @@ Adjust recommendations based on detected type. Local businesses need LocalBusine
 | 1 | geo-audit | `skills/geo-audit/` | Full audit orchestration and scoring |
 | 2 | geo-citability | `skills/geo-citability/` | Passage-level AI citation readiness |
 | 3 | geo-crawlers | `skills/geo-crawlers/` | AI crawler access and robots.txt |
-| 4 | geo-llmstxt | `skills/geo-llmstxt/` | llms.txt standard analysis and generation |
+| 4 | geo-llmstxt | `skills/geo-llmstxt/` | llms.txt facts-hedge analysis and generation (anti-hallucination hygiene, not a visibility lever) |
 | 5 | geo-brand-mentions | `skills/geo-brand-mentions/` | Brand presence on AI-cited platforms |
 | 6 | geo-platform-optimizer | `skills/geo-platform-optimizer/` | Platform-specific AI search optimization |
-| 7 | geo-schema | `skills/geo-schema/` | Structured data for AI discoverability |
+| 7 | geo-schema | `skills/geo-schema/` | Structured data for rich results and entity clarity |
 | 8 | geo-technical | `skills/geo-technical/` | Technical SEO foundations |
 | 9 | geo-content | `skills/geo-content/` | Content quality and E-E-A-T |
 | 10 | geo-report | `skills/geo-report/` | Client-ready deliverable generation |
