@@ -31,6 +31,14 @@ Only **11% of domains** are cited by BOTH ChatGPT and Google AI Overviews for th
 - AIO prefers **concise, factual, unambiguous answers** — hedging and filler reduce citation probability
 - **Google AI Mode is a separate surface, not a bigger AIO:** AIO↔AI Mode URL overlap is only 13.7%, and AI Mode has 1B MAU (AIO 2.5B) with scarcer citation slots — 4.3 citations per response vs 10.3 in classic search (Shadow, Jul 2026 — ⚠️ secondary source). Optimize for them as distinct targets
 
+### 2026 Citation Surfaces Beyond the AIO Box
+
+Google's citation real estate now extends beyond AIO and AI Mode themselves:
+
+- **Preferred Sources** — users can star favorite outlets and get boosted Top Stories placement plus a dedicated "From your sources" section (Google Search blog, Aug 2025, US/India English launch; broader rollout through 2026). This is a Top Stories surface, NOT an AIO mechanism — but for news-adjacent queries it is part of the brand's total Google citation footprint. Earning a user's "preferred" star compounds like a subscription; publishers can link directly to a follow flow.
+- **"Highly Cited" badges, Community Perspectives, and link carousels** — additional in-SERP citation modules attributed to the Google I/O May 2026 announcements. ⚠️ Thin-sourced: this comes from rival skill-pack I/O 2026 notes and we have NOT independently confirmed rollout status or the exact selection mechanics. Treat as watch items — if these modules appear in your SERPs, they are additional extractable surfaces — but do not score them in the rubric until the mechanics are verified.
+- **Common thread:** every new surface still extracts from the same primitives — direct answers, tables, dated authorship, entity clarity. Optimizing the fundamentals covers surfaces that ship faster than any checklist can track.
+
 ### Optimization Checklist
 
 1. **Question-Based Headings**: Use H2/H3 headings phrased as questions matching real user queries. Check Google's "People Also Ask" for the target topic and mirror those exact phrasings.

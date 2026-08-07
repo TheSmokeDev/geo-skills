@@ -228,6 +228,22 @@ If schemas are missing, note: "Ready-to-use structured data code has been prepar
 
 This is the most important section of the report. Organize actions by timeline and impact.
 
+**Falsifiability fields — required for EVERY action in all three tables below.** A recommendation without a falsifiability block is an opinion, not a finding. Directly beneath each action's table entry, include:
+
+- **Observation:** the specific audit finding the action rests on (score, URL, or measurement — e.g. "ChatGPT readiness scored 22/100; only 3 of 40 key pages in the Bing index")
+- **Failure check:** how we would know this fix FAILED — a measurable post-change test with a timeframe (e.g. "30 days after IndexNow setup, Bing still indexes < 50% of key pages")
+- **Leading indicator:** the earliest watchable signal that the fix is working, before citation metrics move (e.g. "Bing WMT index coverage rising week-over-week in the first 2 weeks")
+
+Worked example (Quick Win):
+
+| # | Action | Impact | Effort | Platforms Affected |
+|---|---|---|---|---|
+| 1 | Register Bing Webmaster Tools, submit sitemap, enable IndexNow | High | 2-3 hours | ChatGPT, Copilot |
+
+- **Observation:** ChatGPT readiness scored 22/100; `site:example.com` on Bing returned 3 of 40 key pages — 87% of ChatGPT citations match Bing results, so Bing indexation is the hard gate.
+- **Failure check:** 30 days after setup, Bing index coverage is still under 50% of key pages, or citation tests across 10 target queries show zero brand URLs in ChatGPT. If so, the problem is crawlability/rendering, not indexation — escalate to the technical audit.
+- **Leading indicator:** Bing WMT index-coverage count trending up week-over-week within the first 2 weeks, before any citation movement.
+
 ```markdown
 ## Prioritized Action Plan
 

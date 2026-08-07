@@ -221,19 +221,24 @@ Generate a file called `GEO-AUDIT-REPORT.md` with the following structure:
 
 ## Critical Issues (Fix Immediately)
 
-[List each critical issue with specific page URLs and recommended fix]
+[For EVERY issue — all severities — use this entry format:
+- **Issue:** [what is broken, with specific page URLs]
+- **Observation:** [the audit finding it rests on — score, URL, or measurement]
+- **Recommended fix:** [specific action]
+- **Failure check:** [how we would know the fix failed — measurable test + timeframe]
+- **Leading indicator:** [earliest signal to watch before citation metrics move]]
 
 ## High Priority Issues
 
-[List each high-priority issue with details]
+[Same entry format as Critical — every issue carries observation, fix, failure check, and leading indicator]
 
 ## Medium Priority Issues
 
-[List each medium-priority issue]
+[Same entry format as Critical]
 
 ## Low Priority Issues
 
-[List each low-priority issue]
+[Same entry format as Critical]
 
 ---
 

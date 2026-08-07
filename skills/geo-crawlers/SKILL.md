@@ -217,6 +217,33 @@ Disallow: /
 
 ---
 
+## Agent-Era Crawler Nuance (2026)
+
+robots.txt is no longer the whole access-control story. Three developments change what "access" means in the agent era.
+
+### User-Triggered Fetchers Ignore robots.txt — By Design
+
+Fetchers acting on a direct user request are NOT bound by robots.txt. Google documents this for its user-triggered fetchers — including **Google-Agent** (agent-mode fetcher) and the **NotebookLM** fetcher — and OpenAI's **ChatGPT-User** behaves the same way: when a user asks the assistant to read a specific URL, the fetch is treated as the user's own request, not a crawl (Google Search Central crawler docs; OpenAI bot docs). Implications:
+
+- Blocking these user-agents in robots.txt does not reliably prevent single-URL, user-initiated reads. If a client truly wants to block them, enforcement must happen at the server (auth, paywall).
+- Conversely, a user-triggered fetch is NOT an indexation channel — seeing Google-Agent or ChatGPT-User in the logs does not get content into AIO or ChatGPT Search. The Tier 1 crawlers above still control that. Do not report user-triggered fetches as a visibility win.
+
+### Web Bot Auth (RFC 9421): Signed Crawler Identity
+
+User-agent strings are trivially spoofable. **Web Bot Auth** — the Cloudflare-led proposal built on RFC 9421 (HTTP Message Signatures) — lets legitimate crawlers cryptographically sign requests, so servers verify crawler identity from the signature instead of UA string + IP lists (Cloudflare / IETF draft, 2025).
+
+- If the client's CDN/WAF supports signature verification, prefer it over UA-string rules — spoofed "GPTBot" traffic is common in log samples.
+- When a client says "we block AI bots," check whether enforcement is UA-based (bypassable) or signature/IP-based before accepting the claim.
+
+### RSL 1.0: Machine-Readable Content Licensing
+
+**Really Simple Licensing (RSL) 1.0** (RSL Collective, official spec Dec 2025; steering members include Yahoo, Ziff Davis, O'Reilly) extends robots.txt with a `License:` directive pointing to an XML license document. It adds AI-specific usage categories — `ai-all`, `ai-input`, `ai-index` — so a publisher can allow search indexing while opting out of AI search applications, or demand pay-per-crawl / pay-per-inference compensation.
+
+- ⚠️ Adoption flag: RSL 1.0 is a published standard with publisher momentum, but enforcement by major AI crawlers is NOT confirmed at scale. Treat it as a licensing-stance and monetization option, not as an enforcement mechanism.
+- For visibility-maximizing sites (most GEO clients), RSL is usually out of scope — it matters when the client wants compensation or legal cover, not more citations.
+
+---
+
 ## Analysis Procedure
 
 ### Step 1: Fetch and Parse robots.txt
