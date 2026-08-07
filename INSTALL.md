@@ -73,4 +73,10 @@ curl -fsSL https://archon.diy/install | bash
 git clone https://github.com/TheSmokeDev/token-max-site-factory
 ```
 
+`tokenmax-fleet-orchestrator` additionally needs Python 3 with PyYAML. Its
+controller is portable; the bundled recurring scheduler templates require a
+Linux host with systemd. Copy `assets/fleet.example.yaml`, replace the example
+stage commands with your versioned site/deploy adapter, validate the config,
+and forward-test one site before enabling a timer.
+
 No SEO API keys are required for any skill. Third-party data tools (rank trackers, backlink suites) are always optional and the skills degrade gracefully without them.
