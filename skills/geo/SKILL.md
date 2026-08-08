@@ -55,7 +55,7 @@ allowed-tools: Read, Grep, Glob, Bash, WebFetch, Write
 | Perplexity monthly queries | 500M+ | Perplexity |
 | Gartner: search traffic drop by 2028 | -50% | Gartner |
 | Marketers investing in GEO | Only 23% | Industry surveys |
-| Brand mentions vs backlinks for AI | Branded web mentions r=0.664, YouTube mentions r=0.737, backlinks only r=0.218 | Ahrefs 75K brands (Jul 2026) |
+| Brand mentions vs backlinks for AI | Branded web mentions r=0.664, YouTube mentions r=0.737; raw backlink counts far weaker (directional only — precise figure has no locatable primary source) | Ahrefs 75K brands (Jul 2026) |
 
 ---
 

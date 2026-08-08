@@ -41,7 +41,7 @@ Google AI Overviews pull from Google's own index and lean heavily on E-E-A-T sig
 
 ChatGPT's web search retrieves from the **Bing index** — 87% of citations match Bing results, with no Google anywhere in the pipeline (Subscribe PR, Jul 2026). It combines this with its training knowledge to generate answers, then cites the web sources it relied on. If Bing hasn't indexed you, ChatGPT can't cite you — Bing Webmaster Tools + IndexNow is the hard prerequisite.
 
-**What makes ChatGPT different:** Brand signals outweigh traditional authority metrics. An Ahrefs analysis of 75,000 brands (Jul 2026) found branded web mentions correlate with AI visibility at r=0.664, brand search volume at 0.392, domain rating at only ~0.18-0.33, and raw backlink counts at r=0.218 — the weakest measured signal. YouTube mentions are the strongest single signal ever measured at r=0.737. Chasing backlink counts is the lowest-yield play; earning authentic brand mentions is the highest.
+**What makes ChatGPT different:** Brand signals outweigh traditional authority metrics. An Ahrefs analysis of 75,000 brands (Jul 2026) found branded web mentions correlate with AI visibility at r=0.664 and brand search volume at 0.392; YouTube mentions are the strongest single signal ever measured at r=0.737. Backlink-count and domain-rating correlations are far weaker (⚠️ the precise 0.218/0.18 figures circulating in aggregator blogs have no locatable primary source — stat audit 2026-07-08; treat as directional, never quote them in client/public copy). Chasing backlink counts is the lowest-yield play; earning authentic brand mentions is the highest.
 
 **Freshness is a real but modest differentiator.** Cited URLs average **25.7% fresher** than Google organic results, and ChatGPT's freshness bias is the strongest of any platform — cited URLs skew ~458 days newer than organic (Ahrefs, 17M citations, 2025-26). The viral "fresh content gets cited 4.3x more" figure is untraceable; don't quote it.
 
@@ -51,7 +51,7 @@ ChatGPT's web search retrieves from the **Bing index** — 87% of citations matc
 
 **What to focus on:**
 - Get indexed by Bing and keep it fresh via IndexNow — no Bing indexation, no ChatGPT citation
-- Earn authentic branded web mentions (publications, reviews, communities) — r=0.664 vs 0.218 for backlinks
+- Earn authentic branded web mentions (publications, reviews, communities) — r=0.664; raw backlink counts are the weakest signal (directional only — precise figure has no locatable primary source)
 - Structure your content the way ChatGPT structures its answers (conversational, direct, well-organized)
 - Include verifiable statistics with named sources
 - Match titles and URL slugs to the questions engines fan out into — cited-URL titles score 0.656 cosine similarity to fan-out queries vs 0.484 for non-cited (Ahrefs, Apr 2026)

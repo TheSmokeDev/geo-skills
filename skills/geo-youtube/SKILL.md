@@ -24,7 +24,7 @@ YouTube completed the flip in 2026 and is now the dominant non-text citation sou
 - **#1 social citation source at 38.1%** of social citations, overtaking Reddit (5WPR State of AI Citations, May 2026).
 - **~23% of finance-vertical citations** -- ahead of Wikipedia (7.3%) and LinkedIn (6.8%) (Surfer 46M-citation dataset, 2026).
 - **18.2% of AIO citations from beyond the organic top 100 are YouTube URLs** (Ahrefs, 863K SERPs / 4M URLs, Mar 2026) -- the clearest rank-free lane in AI search.
-- **YouTube mentions correlate r=0.737 with AI visibility -- the strongest single signal ever measured**, ahead of branded web mentions (0.664) and backlinks (0.218) (Ahrefs 75K-brand study via MachineRelations, Jul 2026).
+- **YouTube mentions correlate r=0.737 with AI visibility -- the strongest single signal ever measured**, ahead of branded web mentions (0.664) (Ahrefs 75K-brand study via MachineRelations, Jul 2026).
 
 The mechanism that matters: **AI reads the transcript, chapters, title, and description -- NOT the video itself.** Views and subscriber counts show near-zero correlation with citation (⚠️ single source, AIOCopilot Apr 2026 -- but mechanism-consistent, since engines have no visibility into watch metrics at retrieval time).
 
