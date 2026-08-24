@@ -21,6 +21,18 @@ Point the orchestrator at a URL. It crawls your site, runs a panel of specialist
 
 Then it ranks every issue by severity (critical first, quick wins flagged) and gives you a 30-day action plan.
 
+## Paste-ready search intelligence prompts
+
+The optional [`prompt-packs/dataforseo-intelligence`](prompt-packs/dataforseo-intelligence/README.md)
+pack turns live search and AI-visibility data into decision-ready reports. It includes
+site explorer, keyword research, competitor gap, technical audit, AI visibility,
+community-demand, and owner-intent mapping prompts.
+
+These are not generic "write me an SEO report" prompts. Each one has a spend cap,
+coverage receipt, evidence-state labels, fail-closed missing-data rules, and an exact
+handoff. The owner-intent prompt is the front door to TokenMax: it decides whether to
+upgrade, create, consolidate, or hold a page before generation starts.
+
 ## What's in the pack
 
 **GEO core (the flagship):**
@@ -76,6 +88,11 @@ See [INSTALL.md](INSTALL.md). Short version: copy `skills/` into your agent's sk
 ## Free-first
 
 Every skill in this pack works with no paid API. Where a third-party data tool could help (rank trackers, backlink suites), it is always marked optional and the skill degrades gracefully without it. Research figures cited in the skills come from published studies and are attributed inline.
+
+The optional DataForSEO prompt pack is intentionally separate from the free core. It
+uses DataForSEO's paid-per-use API through the official MCP server, requires an active
+account, and tells the agent to stop at the operator's task/row cap. No DataForSEO
+credentials belong in a prompt or repository file.
 
 The heavy-artillery skills are `token-max-factory`, which drives the free, MIT [Archon CLI](https://archon.diy) and [engine repo](https://github.com/TheSmokeDev/token-max-site-factory), and `tokenmax-fleet-orchestrator`, which sequences consumer-owned site/deploy adapters. They use the coding-agent subscription already running the pack (codex by default, claude opt-in). Still no SEO APIs, no data vendors, no dashboards.
 
