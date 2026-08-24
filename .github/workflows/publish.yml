@@ -34,6 +34,7 @@ jobs:
           if-no-files-found: error
 
   publish:
+    if: ${{ vars.PYPI_PUBLISH_ENABLED == 'true' }}
     needs: build
     runs-on: ubuntu-latest
     environment:
