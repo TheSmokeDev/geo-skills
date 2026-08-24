@@ -1,0 +1,4 @@
+interface:
+  display_name: "GEO Skills CLI"
+  short_description: "Run and validate the GEO toolkit CLI"
+  default_prompt: "Use $geoskills-cli to inspect, validate, or run the installed GEO Skills command surface."

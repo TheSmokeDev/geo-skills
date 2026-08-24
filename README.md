@@ -1,6 +1,12 @@
 # geo-skills
 
+[![CI](https://github.com/TheSmokeDev/geo-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/TheSmokeDev/geo-skills/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-f06424.svg)](LICENSE)
+
 A free, open-source GEO (Generative Engine Optimization) skill pack. Built as portable Agent Skills - runs in Claude Code, Codex, and other agents that read skill files.
+
+> If this saves you a paid dashboard or a week of GEO research, star the repo so
+> more operators can find it.
 
 ![geo-skills: your site URL into the geo orchestrator, scored across 6 weighted categories into a GEO Score and a prioritized fix list](docs/geo-flow.png)
 
@@ -85,6 +91,37 @@ See [INSTALL.md](INSTALL.md). Short version: copy `skills/` into your agent's sk
 /geo audit https://yoursite.com
 ```
 
+### Agent-native CLI
+
+Install the command surface from a clone:
+
+```bash
+python -m pip install -e ".[web]"
+geoskills --json doctor
+geoskills skills list --json
+geoskills prompts list --json
+```
+
+The CLI exposes deterministic discovery and validation without pretending every GEO
+workflow is a local script. It can validate all bundled Agent Skills, inspect a page,
+score citability, and validate the versioned owner-intent JSON handoff consumed by
+TokenMax:
+
+```bash
+geoskills --json validate
+geoskills inspect https://example.com --mode full --json
+geoskills citability https://example.com --json
+geoskills owner-map validate owner-intent-map.json --json
+```
+
+Every CLI command is read-only. Full LLM audits remain Agent Skills so the runtime,
+model, and any paid connector stay explicit.
+
+The command contract follows the agent-native principles demonstrated by
+[CLI-Anything](https://github.com/HKUDS/CLI-Anything): self-describing help,
+machine-readable output, installed-command tests, and real backend behavior. This
+implementation is purpose-built for GEO rather than generated from their harness.
+
 ## Free-first
 
 Every skill in this pack works with no paid API. Where a third-party data tool could help (rank trackers, backlink suites), it is always marked optional and the skill degrades gracefully without it. Research figures cited in the skills come from published studies and are attributed inline.
@@ -99,3 +136,5 @@ The heavy-artillery skills are `token-max-factory`, which drives the free, MIT [
 ## License
 
 MIT. See [LICENSE](LICENSE). Built by SmokeDev. PRs welcome - see [CONTRIBUTING.md](CONTRIBUTING.md).
+If the toolkit supports published work, use GitHub's **Cite this repository** control
+backed by [CITATION.cff](CITATION.cff).

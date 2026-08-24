@@ -50,10 +50,20 @@ Write `OUTPUT_JSON` with this top-level shape:
 
 ```json
 {
+  "schema_version": 1,
   "status": "ready|partial|blocked",
   "evidence_collected_at": "ISO-8601",
   "market": {"location": "", "language": ""},
-  "owners": [],
+  "owners": [
+    {
+      "intent_id": "stable-id",
+      "action": "upgrade|create|consolidate|hold",
+      "primary_query": "",
+      "route_owner": "",
+      "evidence_sources": [],
+      "notes": []
+    }
+  ],
   "collisions": [],
   "gold_page": {},
   "pilot": [],
@@ -65,7 +75,9 @@ Write `OUTPUT_JSON` with this top-level shape:
 ```
 
 Use only JSON primitives. Missing required evidence makes the item `hold`; do not fill
-unknowns with empty claims.
+unknowns with empty claims. Validate the finished file with
+`geoskills owner-map validate OUTPUT_JSON --json`; a failed validation blocks the
+TokenMax handoff.
 
 ## Output contract
 

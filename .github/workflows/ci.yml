@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python-version: ["3.10", "3.12"]
+    runs-on: ${{ matrix.os }}
+    env:
+      PYTHONUTF8: "1"
+      GEOSKILLS_FORCE_INSTALLED: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - name: Install editable CLI and test dependencies
+        run: python -m pip install -e ".[dev]"
+      - name: Run tests
+        run: python -m pytest -q
+      - name: Verify installed command and repository contract
+        run: |
+          geoskills --version
+          geoskills --json doctor
+          geoskills --json validate
+          geoskills skills list --json
+          geoskills prompts list --json
+      - name: Build distribution artifacts
+        run: python -m build --outdir .artifacts
+      - name: Install built wheel
+        run: python -c "import glob, subprocess, sys; subprocess.check_call([sys.executable, '-m', 'pip', 'install', '--force-reinstall', '--no-deps', glob.glob('.artifacts/*.whl')[0]])"
+      - name: Smoke-test wheel resources outside the checkout
+        working-directory: ${{ runner.temp }}
+        run: |
+          geoskills --json doctor
+          geoskills skills list --json

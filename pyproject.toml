@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "geoskills"
+version = "0.1.0"
+description = "Agent-native CLI for the geo-skills GEO and AI-search toolkit"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{name = "SmokeDev"}]
+keywords = [
+  "geo",
+  "seo",
+  "generative-engine-optimization",
+  "ai-search",
+  "agent-skills",
+]
+dependencies = ["PyYAML>=6.0"]
+
+[project.optional-dependencies]
+web = ["requests>=2.31", "beautifulsoup4>=4.12", "lxml>=5.0"]
+pdf = ["reportlab>=4.0"]
+dev = ["build>=1.2", "pytest>=8.0"]
+
+[project.scripts]
+geoskills = "geoskills.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/TheSmokeDev/geo-skills"
+Repository = "https://github.com/TheSmokeDev/geo-skills"
+Issues = "https://github.com/TheSmokeDev/geo-skills/issues"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

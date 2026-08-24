@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/TheSmokeDev/geo-skills/schemas/owner-intent-map.schema.json",
+  "title": "GEO Owner Intent Map",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "status",
+    "evidence_collected_at",
+    "market",
+    "owners",
+    "collisions",
+    "gold_page",
+    "pilot",
+    "held",
+    "quality_gates",
+    "measurement_plan",
+    "coverage_receipt"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "status": {"enum": ["ready", "partial", "blocked"]},
+    "evidence_collected_at": {"type": "string", "format": "date-time"},
+    "market": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["location", "language"],
+      "properties": {
+        "location": {"type": "string", "minLength": 1},
+        "language": {"type": "string", "minLength": 1}
+      }
+    },
+    "owners": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["intent_id", "action", "primary_query", "route_owner", "evidence_sources"],
+        "properties": {
+          "intent_id": {"type": "string", "minLength": 1},
+          "action": {"enum": ["upgrade", "create", "consolidate", "hold"]},
+          "primary_query": {"type": "string", "minLength": 1},
+          "route_owner": {"type": "string"},
+          "evidence_sources": {"type": "array", "items": {"type": "string", "minLength": 1}},
+          "notes": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "collisions": {"type": "array", "items": {"type": "object"}},
+    "gold_page": {"type": ["object", "null"]},
+    "pilot": {"type": "array", "maxItems": 10, "items": {"type": "object"}},
+    "held": {"type": "array", "items": {"type": "object"}},
+    "quality_gates": {"type": "array", "items": {"type": "string"}},
+    "measurement_plan": {"type": "object"},
+    "coverage_receipt": {"type": "object"}
+  }
+}

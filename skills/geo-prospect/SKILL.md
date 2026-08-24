@@ -6,8 +6,9 @@ description: >
   Store audit history, notes, deal values, and generate pipeline summaries.
   Use when user says "prospect", "lead", "client", "pipeline", "crm", "nuovo prospect",
   "aggiungi cliente", or when managing the business side of GEO services.
-version: 1.0.0
-tags: [geo, business, crm, prospect, pipeline, sales]
+metadata:
+  version: "1.0.0"
+  tags: [geo, business, crm, prospect, pipeline, sales]
 allowed-tools: Read, Write, Bash, Glob
 ---
 
