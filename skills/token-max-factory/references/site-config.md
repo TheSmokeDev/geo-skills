@@ -19,12 +19,25 @@ staging_template: ""                 # html/nextjs sites ONLY: where the writer'
 html_template: ""                    # html sites ONLY: repo-relative template with slots
                                      #   {{TITLE}} {{META_DESCRIPTION}} {{CANONICAL}} {{JSONLD}} {{BODY_HTML}} {{LANG}}
 build_verify_command: ""             # optional post-emit check run by the emit node
-locales: [en]                        # v1 generates en only
+locales: [en]                        # exactly one locale per run; propagated into packet/routes/rendering
 batch_kind: mysite-token-max         # ledger identity; keep stable across runs
 
 provider: codex                      # claude requires install --allow-claude
 model_reasoning_effort: xhigh
 artifacts_dir: .token-max-artifacts/mysite/pilot   # repo-relative, inside the worktree
+
+program:                             # governance tightens as scale increases
+  scale: starter                     # starter | growth | enterprise
+  business_model: local-service
+  audience: local buyers comparing qualified providers
+  conversion_goal: request a consultation
+  evidence_owner: owner-operator
+  reviewers: [owner]                 # required for enterprise
+  success_metrics: [qualified organic inquiries]
+
+intent_contract:                     # required for growth and enterprise
+  primary_query: my service
+  route_owner: /services/my-service
 
 inventory:
   entities:                          # WHO the pages are about (cities, locations, products...)
@@ -58,7 +71,8 @@ frontmatter:                         # .format() slots: {entity_<field>}, {topic
   published: ""                      # empty = blank in frontmatter
   updated: ""
 
-prompt_profile: local-service-seo    # prompts/profiles/<name>.md (regulated-insurance | local-service-seo | ...)
+prompt_profile: local-service-seo    # local-service-seo | multi-location-enterprise | saas-b2b
+                                     # ecommerce-category | regulated-insurance
 claim_rules_md: |                    # site-specific rules appended to the materialized writer prompt
   - Never invent prices, statistics, office locations, or local events.
 
@@ -72,6 +86,7 @@ quality:                             # ALL default to the proven production valu
   min_h2: 8
   min_faq_questions: 5
   min_ai_citable_passages: 4
+  min_source_links: 0                # enterprise enforces at least 1 named authority URL per page
   min_text_html_ratio: 0.15
   max_pairwise_overlap: 0.10
   max_cross_overlap: 0.10
@@ -99,6 +114,13 @@ live_mutation:                       # preflight asserts ALL false — do not to
   allow_gsc: false
   allow_indexing: false
 ```
+
+`growth` config loading fails without audience, conversion goal, evidence owner,
+success metrics, primary query, and route owner. `enterprise` additionally fails
+without reviewers and at least one authority source. The report emits
+`batch-report.receipts.json`; required reviewer receipts remain empty and all
+deployment/indexing/ranking/citation states remain false for the separate release
+lane to prove.
 
 ## Batch ledger vocabulary (state/batch.json)
 

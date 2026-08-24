@@ -1,6 +1,6 @@
 ---
 name: token-max-factory
-description: Point-and-shoot programmatic SEO/GEO page factory — scan ANY website, then expand it into hundreds of validated token-max pages (2,800-3,400 words, 90%+ unique, GEO answer-first) via a universal Archon workflow. Use when the user says "token max", "site factory", "point and shoot", "expand this site", "generate city pages", "scan and expand", "programmatic pages for a site", "onboard a site to the factory", or "run the factory". Covers onboarding new sites, running and resuming batches, the Archon 0.5.0 gotchas, and verification. Requires the free Archon CLI (>= 0.5.0) and the token-max-site-factory engine repo.
+description: Point-and-shoot programmatic SEO/GEO page factory — scan ANY website, then expand it into hundreds of validated token-max pages (2,800-3,400 words, 90%+ unique, GEO answer-first) via a universal Archon workflow. Use when the user says "token max", "site factory", "point and shoot", "expand this site", "generate city pages", "scan and expand", "programmatic pages for a site", "onboard a site to the factory", or "run the factory". Covers onboarding new sites, running and resuming batches, the Archon 0.5.0 gotchas, and verification. Requires the free Archon CLI version 0.5.0 or newer and the token-max-site-factory engine repo.
 ---
 
 # token-max-factory — Universal Point-and-Shoot Content Factory
@@ -10,6 +10,11 @@ engine through [Archon](https://archon.diy). Most programmatic SEO fails as
 thin duplicate content or hallucinated local "facts" — this factory attacks
 both with hard validation gates and a packet system where the packet is the
 ONLY fact source.
+
+Before generation, require an owner-intent decision. Use the repository's
+`prompt-packs/dataforseo-intelligence/07-owner-intent-map.md` when live search
+evidence is available. Every cluster must be `upgrade`, `create`, `consolidate`,
+or `hold`; TokenMax only receives approved `create` owners and bounded upgrades.
 
 **Hard boundary (never violate):** the factory NEVER deploys, touches DNS,
 Search Console, sitemaps, or indexing. Generation ends at a clean validation
@@ -51,9 +56,21 @@ python engine/token_max_site_factory.py install --site <id> --run-input "pilot-1
 cd <target-repo> && archon workflow run token-max-site-factory-<id> --no-worktree   # 5. run
 ```
 
-Pilot (10-25 pages) BEFORE any tranche. Tranches ≤300 pages (pairwise overlap
+Prove one gold-standard owner page, then a representative 10-page pilot BEFORE
+any tranche. Tranches ≤300 pages (pairwise overlap
 is O(n²)). Review the worktree diff + report, merge, deploy through the
 site's own lane.
+
+Choose `program.scale` in `site.yaml`:
+
+- `starter`: single operator/site and bounded pilot;
+- `growth`: requires audience, conversion goal, evidence owner, success metrics,
+  primary query, and canonical route owner;
+- `enterprise`: additionally requires named reviewers and authority sources.
+
+Scale adds governance and receipts, not permission to weaken gates. Community or
+Reddit research may justify one reviewed owner page, never an automated modifier
+page family.
 
 ## Running on Archon 0.5.0 — CRITICAL gotchas
 
@@ -96,8 +113,9 @@ site's own lane.
 ## Verification checklist (after every batch)
 
 1. `<artifacts>/reports/validation.json` → `ok: true`, 0 held back, 0 overlaps.
-2. `<artifacts>/reports/batch-report.md` — word counts in band, "Live
-   mutations: none".
+2. `<artifacts>/reports/batch-report.md` — word counts in band and public states
+   false. Check the sibling `batch-report.receipts.json` for SHA-256 config,
+   prompt, batch, validation, source, and output receipts.
 3. HTML sites: spot-open an emitted page; confirm canonical + FAQPage JSON-LD;
    if the site has its own head-baking tooling, prove it changes NOTHING on
    factory pages (emitted heads carry rel=canonical → skipped).
@@ -105,9 +123,10 @@ site's own lane.
 
 ## Prompt profiles
 
-`regulated-insurance` (compliance-heavy verticals; California insurance rules
-as the worked example) and `local-service-seo` (non-regulated local service).
-New vertical = new profile in `prompts/profiles/` + site `claim_rules_md`.
+`local-service-seo`, `multi-location-enterprise`, `saas-b2b`,
+`ecommerce-category`, and `regulated-insurance` (California insurance rules as
+the worked regulated example). New vertical = new profile in
+`prompts/profiles/` + site `claim_rules_md`.
 
 No images are generated anywhere — text-forward by design (GEO extraction
 favors extractable text).
