@@ -1,6 +1,8 @@
 # geo-skills
 
 [![CI](https://github.com/TheSmokeDev/geo-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/TheSmokeDev/geo-skills/actions/workflows/ci.yml)
+[![PyPI](https://img.shields.io/pypi/v/geoskills)](https://pypi.org/project/geoskills/)
+[![Release](https://img.shields.io/github/v/release/TheSmokeDev/geo-skills?sort=semver)](https://github.com/TheSmokeDev/geo-skills/releases/tag/v0.1.0)
 [![License: MIT](https://img.shields.io/badge/License-MIT-f06424.svg)](LICENSE)
 
 A free, open-source GEO (Generative Engine Optimization) skill pack. Built as portable Agent Skills - runs in Claude Code, Codex, and other agents that read skill files.
@@ -93,11 +95,17 @@ See [INSTALL.md](INSTALL.md). Short version: copy `skills/` into your agent's sk
 
 ### Agent-native CLI
 
-Install the command surface from a clone:
+Install from PyPI:
+
+```bash
+python -m pip install geoskills==0.1.0
+geoskills --json doctor
+```
+
+For development from a clone:
 
 ```bash
 python -m pip install -e ".[web]"
-geoskills --json doctor
 geoskills skills list --json
 geoskills prompts list --json
 ```
