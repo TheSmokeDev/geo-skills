@@ -1,9 +1,10 @@
 ---
 name: geo-report
 description: Generate a professional, client-facing GEO report combining all audit results into a single deliverable with scores, findings, and prioritized actions
-version: 1.0.0
-author: geo-seo-claude
-tags: [geo, report, client-deliverable, executive-summary, action-plan]
+metadata:
+  version: "1.0.0"
+  author: geo-seo-claude
+  tags: [geo, report, client-deliverable, executive-summary, action-plan]
 ---
 
 # GEO Client Report Generator

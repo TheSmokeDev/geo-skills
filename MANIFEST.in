@@ -1,0 +1,7 @@
+include CITATION.cff CONTRIBUTING.md INSTALL.md LICENSE README.md
+recursive-include agents *.md
+recursive-include docs *
+recursive-include prompt-packs *.md
+recursive-include schemas *.json
+recursive-include skills *
+global-exclude *.py[cod]

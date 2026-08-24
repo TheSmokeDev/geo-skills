@@ -1,9 +1,10 @@
 ---
 name: geo-schema
 description: Schema.org structured data audit and generation for rich results and entity clarity — detect, validate, and generate JSON-LD markup. Schema is NOT an AI-citation lever (Ahrefs controlled study, May 2026); it earns rich results and keeps entity data unambiguous.
-version: 1.0.0
-author: geo-seo-claude
-tags: [geo, schema, structured-data, json-ld, entity-recognition, ai-discoverability]
+metadata:
+  version: "1.0.0"
+  author: geo-seo-claude
+  tags: [geo, schema, structured-data, json-ld, entity-recognition, ai-discoverability]
 ---
 
 # GEO Schema & Structured Data

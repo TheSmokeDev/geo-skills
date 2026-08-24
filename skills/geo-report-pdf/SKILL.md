@@ -1,9 +1,10 @@
 ---
 name: geo-report-pdf
 description: Generate a professional PDF report from GEO audit data using ReportLab. Creates a polished, client-ready PDF with score gauges, bar charts, platform readiness visualizations, color-coded tables, and prioritized action plans.
-version: 1.0.0
-author: geo-seo-claude
-tags: [geo, pdf, report, client-deliverable, professional]
+metadata:
+  version: "1.0.0"
+  author: geo-seo-claude
+  tags: [geo, pdf, report, client-deliverable, professional]
 ---
 
 # GEO PDF Report Generator

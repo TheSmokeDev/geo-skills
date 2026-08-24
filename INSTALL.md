@@ -7,6 +7,19 @@ git clone https://github.com/TheSmokeDev/geo-skills.git
 cd geo-skills
 ```
 
+### CLI and validators
+
+Install the repo command surface in editable mode:
+
+```bash
+python -m pip install -e ".[web]"
+geoskills --json doctor
+geoskills --json validate
+```
+
+The `web` extra enables the read-only page inspector and citability scorer. Omit it
+when you only need skill/prompt discovery and contract validation.
+
 ### Claude Code
 
 ```bash

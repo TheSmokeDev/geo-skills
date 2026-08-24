@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this toolkit in published work, please cite it as below."
+title: "geo-skills: Generative Engine Optimization Agent Skills"
+type: software
+authors:
+  - family-names: "SmokeDev"
+version: 0.1.0
+repository-code: "https://github.com/TheSmokeDev/geo-skills"
+url: "https://github.com/TheSmokeDev/geo-skills"
+license: MIT

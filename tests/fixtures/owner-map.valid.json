@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "status": "ready",
+  "evidence_collected_at": "2026-08-23T20:00:00Z",
+  "market": {"location": "United States", "language": "English"},
+  "owners": [
+    {
+      "intent_id": "emergency-plumber",
+      "action": "create",
+      "primary_query": "emergency plumber",
+      "route_owner": "/services/emergency-plumbing",
+      "evidence_sources": ["https://example.com/evidence"],
+      "notes": []
+    }
+  ],
+  "collisions": [],
+  "gold_page": {"owner_id": "emergency-plumber", "route": "/services/emergency-plumbing"},
+  "pilot": [
+    {
+      "owner_id": "emergency-plumber",
+      "entity": "chicago",
+      "route": "/chicago/emergency-plumbing",
+      "reason": "highest-demand representative entity"
+    }
+  ],
+  "held": [],
+  "quality_gates": ["unique title and description", "named source link"],
+  "measurement_plan": {"checkpoints_days": [7, 28]},
+  "coverage_receipt": {"rows": 100, "capped": false}
+}
