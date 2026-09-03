@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/TheSmokeDev/geo-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/TheSmokeDev/geo-skills/actions/workflows/ci.yml)
 [![PyPI](https://img.shields.io/pypi/v/geoskills)](https://pypi.org/project/geoskills/)
-[![Release](https://img.shields.io/github/v/release/TheSmokeDev/geo-skills?sort=semver)](https://github.com/TheSmokeDev/geo-skills/releases/tag/v0.1.0)
+[![Release](https://img.shields.io/github/v/release/TheSmokeDev/geo-skills?sort=semver)](https://github.com/TheSmokeDev/geo-skills/releases/latest)
 [![License: MIT](https://img.shields.io/badge/License-MIT-f06424.svg)](LICENSE)
 
 A free, open-source GEO (Generative Engine Optimization) skill pack. Built as portable Agent Skills - runs in Claude Code, Codex, and other agents that read skill files.
@@ -13,6 +13,17 @@ A free, open-source GEO (Generative Engine Optimization) skill pack. Built as po
 ![geo-skills: your site URL into the geo orchestrator, scored across 6 weighted categories into a GEO Score and a prioritized fix list](docs/geo-flow.png)
 
 Traditional SEO ranks you in Google's blue links. **GEO gets you quoted inside the AI answer** - by ChatGPT, Claude, Perplexity, Gemini, and Google AI Overviews. This pack scores how citable your site is to those engines and writes you a prioritized fix list. No dashboard subscription, no paid API required. It runs locally in Claude Code.
+
+## Quick start
+
+```bash
+python -m pip install geoskills==0.1.1
+geoskills inspect https://example.com --mode full --json
+```
+
+The CLI is read-only and machine-readable. To run the full agent-led audit,
+install the bundled skills and invoke `/geo audit https://example.com`; see
+[INSTALL.md](INSTALL.md).
 
 ## What it does
 
@@ -98,7 +109,7 @@ See [INSTALL.md](INSTALL.md). Short version: copy `skills/` into your agent's sk
 Install from PyPI:
 
 ```bash
-python -m pip install geoskills==0.1.0
+python -m pip install geoskills==0.1.1
 geoskills --json doctor
 ```
 
@@ -146,3 +157,12 @@ The heavy-artillery skills are `token-max-factory`, which drives the free, MIT [
 MIT. See [LICENSE](LICENSE). Built by SmokeDev. PRs welcome - see [CONTRIBUTING.md](CONTRIBUTING.md).
 If the toolkit supports published work, use GitHub's **Cite this repository** control
 backed by [CITATION.cff](CITATION.cff).
+
+## Example output
+
+- [GEO audit summary](examples/geo-audit-summary.json) - composite score,
+  evidence states, and a prioritized action list.
+- [Citability summary](examples/citability-summary.json) - passage-level
+  extractability findings with no invented traffic or ranking claims.
+
+Release history: [CHANGELOG.md](CHANGELOG.md).

@@ -26,7 +26,7 @@ def test_help_and_version():
     assert run_cli("--help").returncode == 0
     version = run_cli("--version")
     assert version.returncode == 0
-    assert "geoskills 0.1.0" in version.stdout
+    assert "geoskills 0.1.1" in version.stdout
 
 
 def test_doctor_json():

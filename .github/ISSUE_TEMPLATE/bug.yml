@@ -1,0 +1,33 @@
+name: Bug report
+description: Report a reproducible CLI, skill, or documentation defect.
+title: "bug: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Include the command or skill invoked and the observed output.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction
+      description: Provide the smallest safe reproduction. Remove credentials and private URLs.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      placeholder: geoskills 0.1.1
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Python version, and agent runtime if relevant.
+    validations:
+      required: true

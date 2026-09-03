@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "target": "https://example.com",
+  "status": "complete",
+  "geo_score": 62,
+  "categories": {
+    "ai_citability": {"score": 68, "weight": 0.25, "evidence_state": "observed"},
+    "brand_authority": {"score": 40, "weight": 0.2, "evidence_state": "partial"},
+    "content_eeat": {"score": 70, "weight": 0.2, "evidence_state": "observed"},
+    "technical_geo": {"score": 74, "weight": 0.15, "evidence_state": "observed"},
+    "schema": {"score": 66, "weight": 0.1, "evidence_state": "observed"},
+    "platform_readiness": {"score": 48, "weight": 0.1, "evidence_state": "partial"}
+  },
+  "priorities": [
+    {"severity": "critical", "action": "Put the direct answer in the opening passage."},
+    {"severity": "high", "action": "Add attributable first-party evidence and named sources."},
+    {"severity": "medium", "action": "Verify crawler access against rendered HTML."}
+  ],
+  "caveats": [
+    "Example data only; it does not claim live rankings, traffic, or citations."
+  ]
+}

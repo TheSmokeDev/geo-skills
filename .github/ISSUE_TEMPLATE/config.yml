@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions and implementation discussion
+    url: https://github.com/TheSmokeDev/geo-skills/discussions
+    about: Ask usage questions or discuss an implementation before filing a defect.
