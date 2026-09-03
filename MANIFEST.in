@@ -1,6 +1,7 @@
-include CITATION.cff CONTRIBUTING.md INSTALL.md LICENSE README.md
+include CHANGELOG.md CITATION.cff CONTRIBUTING.md INSTALL.md LICENSE README.md
 recursive-include agents *.md
 recursive-include docs *
+recursive-include examples *.json
 recursive-include prompt-packs *.md
 recursive-include schemas *.json
 recursive-include skills *

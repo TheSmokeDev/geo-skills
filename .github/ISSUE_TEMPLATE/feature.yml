@@ -1,0 +1,26 @@
+name: Feature request
+description: Propose a bounded GEO check, skill, or CLI improvement.
+title: "feature: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What concrete GEO or AI-search job is currently difficult?
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence and expected behavior
+      description: Link primary documentation or a reproducible public example where possible.
+    validations:
+      required: true
+  - type: textarea
+    id: boundary
+    attributes:
+      label: Safety and scope boundary
+      description: Note paid APIs, external writes, credentials, or claims the feature must not imply.
+    validations:
+      required: true

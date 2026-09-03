@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "geoskills"
-version = "0.1.0"
+version = "0.1.1"
 description = "Agent-native CLI for the geo-skills GEO and AI-search toolkit"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -15,7 +15,28 @@ keywords = [
   "seo",
   "generative-engine-optimization",
   "ai-search",
+  "ai-visibility",
+  "answer-engine-optimization",
   "agent-skills",
+  "chatgpt-search",
+  "claude-code",
+  "codex",
+  "llm-optimization",
+  "programmatic-seo",
+  "seo-tools",
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Information Technology",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Internet :: WWW/HTTP :: Indexing/Search",
 ]
 dependencies = ["PyYAML>=6.0"]
 
@@ -31,6 +52,8 @@ geoskills = "geoskills.cli:main"
 Homepage = "https://github.com/TheSmokeDev/geo-skills"
 Repository = "https://github.com/TheSmokeDev/geo-skills"
 Issues = "https://github.com/TheSmokeDev/geo-skills/issues"
+Documentation = "https://github.com/TheSmokeDev/geo-skills#readme"
+Changelog = "https://github.com/TheSmokeDev/geo-skills/blob/main/CHANGELOG.md"
 
 [tool.setuptools]
 package-dir = {"" = "src"}

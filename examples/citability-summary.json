@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "target": "https://example.com/guide",
+  "status": "complete",
+  "passages": [
+    {
+      "passage_id": "p1",
+      "score": 81,
+      "finding": "The passage gives a direct, bounded answer and names its source.",
+      "recommendation": "Keep the answer intact and refresh the source date when it changes."
+    },
+    {
+      "passage_id": "p2",
+      "score": 43,
+      "finding": "The passage uses broad marketing language with no checkable support.",
+      "recommendation": "Replace the superlative with a specific mechanism or remove it."
+    }
+  ],
+  "caveats": [
+    "Citability scoring is an editorial diagnostic, not proof that an AI engine cited the page."
+  ]
+}

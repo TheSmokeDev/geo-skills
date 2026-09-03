@@ -4,8 +4,8 @@ from setuptools import setup
 
 
 ROOT = Path(__file__).resolve().parent
-RESOURCE_DIRS = ("agents", "docs", "prompt-packs", "schemas", "skills")
-ROOT_FILES = ("CITATION.cff", "CONTRIBUTING.md", "INSTALL.md", "LICENSE", "README.md")
+RESOURCE_DIRS = ("agents", "docs", "examples", "prompt-packs", "schemas", "skills")
+ROOT_FILES = ("CHANGELOG.md", "CITATION.cff", "CONTRIBUTING.md", "INSTALL.md", "LICENSE", "README.md")
 
 
 def bundled_data_files() -> list[tuple[str, list[str]]]:
